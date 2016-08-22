@@ -2,6 +2,7 @@
 extends Control
 
 const NEXT_SCENE_PATH = "res://levels/level.tscn"
+
 onready var tree = get_tree()
 
 func _ready():

@@ -3,9 +3,10 @@ extends Node2D
 
 const MIN_LIFE = 0
 const MAX_LIFE = 3
+
 onready var _current = MAX_LIFE
 
-func get_current_health():
+func get_current_life():
 	return _current
 
 func is_alive():
