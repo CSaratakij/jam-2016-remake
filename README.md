@@ -73,3 +73,6 @@ KiKi - The Sacrifice on Global Game Jam 2016 (29-31 Jan 2016)
 - [W3C - Markup Validation Service](https://validator.w3.org/)
 - Sound: [lessmilk.com](http://www.lessmilk.com/), [super-coin-box](https://github.com/dmaslov/super-coin-box)
 - Font: [Permanent Marker](https://www.google.com/fonts/specimen/Permanent+Marker)
+
+## Notes
+This fork is in-progress to remake this game from the 48 hour jam of Global Game Jam 2016 by using GodotEngine v.2.1 stable to fix the bug and make it easier to port this game to the mobile (andriod) :)
