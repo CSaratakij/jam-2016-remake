@@ -38,7 +38,7 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 104, 86 )
+transform/pos = Vector2( -1, 100 )
 
 [node name="floors" type="Node2D" parent="."]
 

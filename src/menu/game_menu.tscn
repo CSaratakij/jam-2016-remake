@@ -1,9 +1,33 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://menu/game_menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/restart-button.tex" type="Texture" id=2]
 [ext_resource path="res://menu/pause-button.tex" type="Texture" id=3]
 [ext_resource path="res://font/GamePause.fnt" type="BitmapFont" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "btnRestart_dissapear"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/btnRestart:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "btnRestart_reapear"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/btnRestart:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
 
 [node name="game_menu" type="Control"]
 
@@ -84,6 +108,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 __meta__ = { "_edit_lock_":true }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+process/pause_mode = 2
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/btnRestart_dissapear = SubResource( 1 )
+anims/btnRestart_reapear = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 [connection signal="pressed" from="HBoxContainer/btnRestart" to="." method="_on_btnRestart_pressed"]
 

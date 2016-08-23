@@ -1,9 +1,15 @@
 
-extends RigidBody2D
+extends KinematicBody2D
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
+const MOVE_SPEED = 280.0
+const INIT_MOVE_DIRECTION = Vector2(1, 0)
+
+onready var _movement = Vector2()
+onready var _move_direction = INIT_MOVE_DIRECTION
 
 func _ready():
-	pass
+	set_fixed_process(true)
+
+func _fixed_process(delta):
+	_movement = _move_direction * MOVE_SPEED * delta
+	move(_movement)

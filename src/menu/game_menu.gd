@@ -2,10 +2,11 @@
 extends Control
 
 onready var tree = get_tree()
-onready var lblGamePause = get_node("lblGamePause")
+onready var _lblGamePause = get_node("lblGamePause")
+onready var _animation_player = get_node("AnimationPlayer")
 
 func _ready():
-	lblGamePause.hide()
+	_lblGamePause.hide()
 
 func _on_btnRestart_pressed():
 	if not tree.is_paused():
@@ -14,7 +15,9 @@ func _on_btnRestart_pressed():
 func _on_btnPause_pressed():
 	if not tree.is_paused():
 		tree.set_pause(true)
-		lblGamePause.show()
+		_lblGamePause.show()
+		_animation_player.play("btnRestart_dissapear")
 	else:
 		tree.set_pause(false)
-		lblGamePause.hide()
+		_lblGamePause.hide()
+		_animation_player.play("btnRestart_reapear")
