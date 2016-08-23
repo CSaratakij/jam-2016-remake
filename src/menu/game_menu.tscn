@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://menu/game_menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/restart-button.tex" type="Texture" id=2]
 [ext_resource path="res://menu/pause-button.tex" type="Texture" id=3]
+[ext_resource path="res://font/GamePause.fnt" type="BitmapFont" id=4]
 
 [node name="game_menu" type="Control"]
 
@@ -62,6 +63,25 @@ enabled_focus_mode = 2
 shortcut = null
 icon = ExtResource( 3 )
 flat = true
+
+[node name="lblGamePause" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 168.0
+margin/top = 188.0
+margin/right = 529.0
+margin/bottom = 243.0
+custom_fonts/font = ExtResource( 4 )
+text = "GAME PAUSED"
+align = 1
+valign = 1
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="pressed" from="HBoxContainer/btnRestart" to="." method="_on_btnRestart_pressed"]
 
