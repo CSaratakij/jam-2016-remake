@@ -1,4 +1,7 @@
-[gd_scene format=1]
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://font/UI_Player_Status.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://health/item-life.tex" type="Texture" id=2]
 
 [node name="ui_player_status" type="Control"]
 
@@ -11,7 +14,32 @@ margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
 
-[node name="lblLife" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+alignment = 0
+
+[node name="Life" type="HBoxContainer" parent="VBoxContainer"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 70.0
+margin/bottom = 18.0
+alignment = 0
+
+[node name="lblLife" type="Label" parent="VBoxContainer/Life"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -19,9 +47,139 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 14.0
-text = "Life"
+margin/right = 41.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 1 )
+text = "Life:"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer/Life"]
+
+transform/pos = Vector2( 40, 0 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 60, 20 )
+
+[node name="Mask" type="HBoxContainer" parent="VBoxContainer"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 22.0
+margin/right = 70.0
+margin/bottom = 40.0
+alignment = 0
+
+[node name="lblMask" type="Label" parent="VBoxContainer/Mask"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 52.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 1 )
+text = "Mask:"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Score" type="HBoxContainer" parent="VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 44.0
+margin/right = 70.0
+margin/bottom = 62.0
+alignment = 0
+
+[node name="lblScore" type="Label" parent="VBoxContainer/Score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 55.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 1 )
+text = "Score:"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblDynamicScore" type="Label" parent="VBoxContainer/Score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 59.0
+margin/top = 0.0
+margin/right = 70.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="BestScore" type="HBoxContainer" parent="VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 66.0
+margin/right = 70.0
+margin/bottom = 84.0
+alignment = 0
+
+[node name="lblBestScore" type="Label" parent="VBoxContainer/BestScore"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 44.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 1 )
+text = "Best:"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblDynamicBestScore" type="Label" parent="VBoxContainer/BestScore"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 48.0
+margin/top = 0.0
+margin/right = 59.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
