@@ -40,6 +40,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+__meta__ = { "_edit_lock_":true }
 
 [node name="lblSubGameTitle" type="Label" parent="."]
 
@@ -52,11 +53,11 @@ margin/top = 182.0
 margin/right = 430.0
 margin/bottom = 213.0
 custom_fonts/font = ExtResource( 3 )
-text = "By - Jam 2016"
-uppercase = true
+text = "by - JAM 2016"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+__meta__ = { "_edit_lock_":true }
 
 [node name="btnPlay" type="TextureButton" parent="."]
 
@@ -72,6 +73,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 4 )
+__meta__ = { "_edit_lock_":true }
 
 [node name="BG" type="Sprite" parent="."]
 
