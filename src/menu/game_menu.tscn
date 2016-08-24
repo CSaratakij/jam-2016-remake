@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://menu/game_menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/restart-button.tex" type="Texture" id=2]
 [ext_resource path="res://menu/pause-button.tex" type="Texture" id=3]
 [ext_resource path="res://font/GamePause.fnt" type="BitmapFont" id=4]
+[ext_resource path="res://menu/overpanel.png" type="Texture" id=5]
+[ext_resource path="res://font/GameTitle.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://menu/start-button.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -12,7 +15,7 @@ length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("HBoxContainer/btnRestart:visibility/opacity")
+tracks/0/path = NodePath("ControlButton/btnRestart:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
@@ -24,7 +27,7 @@ length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("HBoxContainer/btnRestart:visibility/opacity")
+tracks/0/path = NodePath("ControlButton/btnRestart:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
@@ -41,7 +44,7 @@ margin/right = 60.0
 margin/bottom = 40.0
 script/script = ExtResource( 1 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ControlButton" type="HBoxContainer" parent="."]
 
 anchor/left = 1
 anchor/right = 1
@@ -56,7 +59,7 @@ margin/bottom = 58.0
 alignment = 0
 __meta__ = { "_edit_lock_":true }
 
-[node name="btnRestart" type="Button" parent="HBoxContainer"]
+[node name="btnRestart" type="Button" parent="ControlButton"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -72,7 +75,7 @@ shortcut = null
 icon = ExtResource( 2 )
 flat = true
 
-[node name="btnPause" type="Button" parent="HBoxContainer"]
+[node name="btnPause" type="Button" parent="ControlButton"]
 
 process/pause_mode = 2
 focus/ignore_mouse = false
@@ -122,8 +125,152 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[connection signal="pressed" from="HBoxContainer/btnRestart" to="." method="_on_btnRestart_pressed"]
+[node name="ScorePanelBG" type="TextureFrame" parent="."]
 
-[connection signal="pressed" from="HBoxContainer/btnPause" to="." method="_on_btnPause_pressed"]
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 136.0
+margin/top = 8.0
+margin/right = 576.0
+margin/bottom = 397.0
+texture = ExtResource( 5 )
+stretch_mode = 0
+
+[node name="ScorePanel" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 234.0
+margin/top = 78.0
+margin/right = 492.0
+margin/bottom = 354.0
+alignment = 1
+
+[node name="Score" type="HBoxContainer" parent="ScorePanel"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 29.0
+margin/right = 258.0
+margin/bottom = 84.0
+alignment = 1
+
+[node name="lblScore" type="Label" parent="ScorePanel/Score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 34.0
+margin/top = 0.0
+margin/right = 185.0
+margin/bottom = 55.0
+custom_fonts/font = ExtResource( 6 )
+text = "Score:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblDynamicScore" type="Label" parent="ScorePanel/Score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 189.0
+margin/top = 0.0
+margin/right = 223.0
+margin/bottom = 55.0
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="BestScore" type="HBoxContainer" parent="ScorePanel"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 88.0
+margin/right = 258.0
+margin/bottom = 143.0
+alignment = 1
+
+[node name="lblBestScore" type="Label" parent="ScorePanel/BestScore"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 50.0
+margin/top = 0.0
+margin/right = 169.0
+margin/bottom = 55.0
+custom_fonts/font = ExtResource( 6 )
+text = "Best:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblDynamicBestScore" type="Label" parent="ScorePanel/BestScore"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 173.0
+margin/top = 0.0
+margin/right = 207.0
+margin/bottom = 55.0
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ReplayButton" type="HBoxContainer" parent="ScorePanel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 147.0
+margin/right = 258.0
+margin/bottom = 247.0
+alignment = 1
+
+[node name="btnReplay" type="TextureButton" parent="ScorePanel/ReplayButton"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 49.0
+margin/top = 0.0
+margin/right = 208.0
+margin/bottom = 100.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 7 )
+
+[connection signal="pressed" from="ControlButton/btnRestart" to="." method="_on_btnRestart_pressed"]
+
+[connection signal="pressed" from="ControlButton/btnPause" to="." method="_on_btnPause_pressed"]
+
+[connection signal="pressed" from="ScorePanel/ReplayButton/btnReplay" to="." method="_on_btnReplay_pressed"]
 
 
