@@ -51,15 +51,6 @@ enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 3 )
 
-[node name="Timer" type="Timer" parent="."]
-
-process_mode = 1
-wait_time = 1.2
-one_shot = true
-autostart = false
-
 [connection signal="pressed" from="btnSkip" to="." method="_on_btnSkip_pressed"]
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
