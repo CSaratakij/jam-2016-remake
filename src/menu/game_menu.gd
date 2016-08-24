@@ -37,6 +37,3 @@ func _on_btnPause_pressed():
 			tree.set_pause(false)
 			_lblGamePause.hide()
 			_animation_player.play("btnRestart_reapear")
-
-func _on_btnReplay_pressed():
-	tree.reload_current_scene()
