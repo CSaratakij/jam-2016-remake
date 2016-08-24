@@ -1,6 +1,8 @@
 
 extends HBoxContainer
 
+var current_score = 0
+
 onready var tree = get_tree()
 onready var root = tree.get_root()
 onready var global = root.get_node("/root/global")
@@ -10,5 +12,5 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	var current_score = str(global.get_score())
+	current_score = str(global.get_score())
 	lblDynamicScore.set_text(current_score)

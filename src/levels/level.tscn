@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://levels/bg.jpg" type="Texture" id=2]
 [ext_resource path="res://floor/floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menu/game_menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/ui_player_status.tscn" type="PackedScene" id=5]
-[ext_resource path="res://levels/switch_side_trigger.gd" type="Script" id=6]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://totems/totem1.png" type="Texture" id=8]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://totems/totem1.png" type="Texture" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -85,8 +84,6 @@ margin/bottom = 56.0
 
 [node name="SwitchSideTrigger" type="Node2D" parent="."]
 
-script/script = ExtResource( 6 )
-
 [node name="floor1-2" type="Area2D" parent="SwitchSideTrigger" groups=[ "switch_side_trigger" ]]
 
 editor/display_folded = true
@@ -147,7 +144,7 @@ polygon = Vector2Array( -32, -86, -14, -86, -14, 76, -32, 76 )
 shape_range = Vector2( 0, 0 )
 trigger = true
 
-[node name="player" parent="." instance=ExtResource( 7 )]
+[node name="player" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -4, 68 )
 
@@ -164,7 +161,7 @@ collision/margin = 0.08
 
 [node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="TestTotems5" type="KinematicBody2D" parent="Totems[Experiment]"]
 
@@ -177,7 +174,7 @@ collision/margin = 0.08
 
 [node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems5"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="TestTotems6" type="KinematicBody2D" parent="Totems[Experiment]"]
 
@@ -190,7 +187,7 @@ collision/margin = 0.08
 
 [node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems6"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="TestTotems7" type="KinematicBody2D" parent="Totems[Experiment]"]
 
@@ -203,7 +200,7 @@ collision/margin = 0.08
 
 [node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems7"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="TestTotems1" type="KinematicBody2D" parent="Totems[Experiment]"]
 
@@ -216,7 +213,7 @@ collision/margin = 0.08
 
 [node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems1"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="TestTotems2" type="KinematicBody2D" parent="Totems[Experiment]"]
 
@@ -229,7 +226,7 @@ collision/margin = 0.08
 
 [node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems2"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="TestTotems3" type="KinematicBody2D" parent="Totems[Experiment]"]
 
@@ -242,7 +239,7 @@ collision/margin = 0.08
 
 [node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems3"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="TestTotems4" type="KinematicBody2D" parent="Totems[Experiment]"]
 
@@ -255,12 +252,6 @@ collision/margin = 0.08
 
 [node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems4"]
 
-texture = ExtResource( 8 )
-
-[connection signal="body_enter" from="SwitchSideTrigger/floor1-2" to="SwitchSideTrigger" method="_on_floor12_body_enter"]
-
-[connection signal="body_enter" from="SwitchSideTrigger/floor2-3" to="SwitchSideTrigger" method="_on_floor23_body_enter"]
-
-[connection signal="body_enter" from="SwitchSideTrigger/floor3-1" to="SwitchSideTrigger" method="_on_floor31_body_enter"]
+texture = ExtResource( 7 )
 
 
