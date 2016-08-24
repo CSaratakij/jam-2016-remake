@@ -2,8 +2,8 @@
 extends KinematicBody2D
 
 const GRAVITY = 1000.0
-const MOVE_SPEED = 280.0
-const JUMP_FORCE = 240.0
+const MOVE_SPEED = 265.0
+const JUMP_FORCE = 225.0
 const INIT_MOVE_DIRECTION = Vector2(1, 1)
 
 var _velocity = Vector2()
