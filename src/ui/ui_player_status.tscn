@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://font/UI_Player_Status.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://health/item-life.tex" type="Texture" id=2]
+[ext_resource path="res://ui/ui_score.gd" type="Script" id=3]
 
 [node name="ui_player_status" type="Control"]
 
@@ -36,7 +37,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 70.0
+margin/right = 52.0
 margin/bottom = 18.0
 alignment = 0
 
@@ -74,7 +75,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 22.0
-margin/right = 70.0
+margin/right = 52.0
 margin/bottom = 40.0
 alignment = 0
 
@@ -106,6 +107,7 @@ margin/top = 380.0
 margin/right = 70.0
 margin/bottom = 398.0
 alignment = 0
+script/script = ExtResource( 3 )
 
 [node name="lblScore" type="Label" parent="Score"]
 
