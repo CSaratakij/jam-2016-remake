@@ -18,18 +18,24 @@ var start_points = [
 					]
 
 onready var _move_direction = INIT_MOVE_DIRECTION
+onready var tree = get_tree()
+onready var root = tree.get_root()
 onready var _sprite = get_node("Sprite")
 onready var _raycast = get_node("RayCast2D")
-onready var global = get_tree().get_root().get_node("/root/global")
+onready var _health = get_node("health")
+onready var global = root.get_node("/root/global")
 
 func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
 	is_grounded = _raycast.is_colliding()
-	
-	_velocity.x = _move_direction.x * MOVE_SPEED
 	_velocity.y += _move_direction.y * GRAVITY * delta
+	
+	if not global.is_game_over():
+		_velocity.x = _move_direction.x * MOVE_SPEED
+	else:
+		_velocity.x = 0.0
 	
 	if is_grounded:
 		if Input.is_action_pressed("jump"):
@@ -73,3 +79,8 @@ func _on_Area2D_area_enter( area ):
 		
 		elif area.get_name() == "floor3-1":
 			set_transform(Matrix32(0.0, start_points[0]))
+
+
+func _on_Area2D_body_enter( body ):
+	if body.get_groups()[0] == "totem":
+		_health.remove(1)
