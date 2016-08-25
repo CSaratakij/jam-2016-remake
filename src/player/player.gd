@@ -10,8 +10,12 @@ const INIT_MOVE_DIRECTION = Vector2(1, 1)
 var _velocity = Vector2()
 var _motion = Vector2()
 var is_grounded = false
-var is_jump = false
 var score = 0
+var start_points = [
+					Vector2(0, 80),
+					Vector2(715, 220),
+					Vector2(0, 360)
+					]
 
 onready var _move_direction = INIT_MOVE_DIRECTION
 onready var _sprite = get_node("Sprite")
@@ -19,13 +23,7 @@ onready var _raycast = get_node("RayCast2D")
 onready var global = get_tree().get_root().get_node("/root/global")
 
 func _ready():
-	set_process_input(true)
 	set_fixed_process(true)
-
-func _input(event):
-	if event.type == InputEvent.SCREEN_TOUCH:
-		print("touch")
-		is_jump = true
 
 func _fixed_process(delta):
 	is_grounded = _raycast.is_colliding()
@@ -35,10 +33,7 @@ func _fixed_process(delta):
 	
 	if is_grounded:
 		if Input.is_action_pressed("jump"):
-			is_jump = true
 			_velocity.y = -JUMP_FORCE
-	else:
-		is_jump = false
 	
 #	if OS.has_touchscreen_ui_hint():
 #		pass
@@ -67,12 +62,14 @@ func _on_Area2D_area_enter( area ):
 		global.add_score(POINT)
 		
 		if area.get_name() == "floor1-2":
-			set_transform(Matrix32(0, Vector2(715, 220)))
+			set_transform(Matrix32(0.0, start_points[1]))
 			change_move_direction_h()
 			_sprite.set_flip_h(true)
+		
 		elif area.get_name() == "floor2-3":
-			set_transform(Matrix32(0, Vector2(0, 360)))
+			set_transform(Matrix32(0.0, start_points[2]))
 			change_move_direction_h()
 			_sprite.set_flip_h(false)
+		
 		elif area.get_name() == "floor3-1":
-			set_transform(Matrix32(0, Vector2(0, 80)))
+			set_transform(Matrix32(0.0, start_points[0]))

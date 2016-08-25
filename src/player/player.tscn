@@ -4,15 +4,15 @@
 [ext_resource path="res://player/player.tex" type="Texture" id=2]
 [ext_resource path="res://health/health.gd" type="Script" id=3]
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 8.1, 36.1, 25.1, 36.1, 25.1, 37.1, 8.1, 37.1 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 10, 12, 29, 12, 25, 36, 10, 36 )
+points = Vector2Array( 21, 12, 29, 12, 24, 36, 14, 36 )
 
 [sub_resource type="Animation" id=3]
 
@@ -28,7 +28,7 @@ tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.199171, 0.2 ), "transitions":Flo
 [node name="player" type="KinematicBody2D" groups=[ "player" ]]
 
 input/pickable = false
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -20.1, -20.1 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -39,7 +39,6 @@ script/script = ExtResource( 1 )
 [node name="collision" type="CollisionPolygon2D" parent="."]
 
 transform/pos = Vector2( -20.1, -20.1 )
-transform/scale = Vector2( 1, 1 )
 build_mode = 0
 polygon = Vector2Array( 8.1, 36.1, 25.1, 36.1, 25.1, 37.1, 8.1, 37.1 )
 shape_range = Vector2( 0, 0 )
@@ -48,7 +47,7 @@ trigger = false
 [node name="Area2D" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -20, -20 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
@@ -60,7 +59,7 @@ angular_damp = 1.0
 
 transform/pos = Vector2( -20, -20 )
 build_mode = 0
-polygon = Vector2Array( 10, 12, 29, 12, 25, 36, 10, 36 )
+polygon = Vector2Array( 21, 12, 29, 12, 24, 36, 14, 36 )
 shape_range = Vector2( 0, 0 )
 trigger = true
 
