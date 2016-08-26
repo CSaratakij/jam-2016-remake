@@ -38,27 +38,28 @@ func _process(delta):
 		_sprite.show()
 
 func _fixed_process(delta):
-	is_grounded = _raycast.is_colliding()
-	_velocity.y += _move_direction.y * GRAVITY * delta
+	if _health.is_alive():
+		is_grounded = _raycast.is_colliding()
+		_velocity.y += _move_direction.y * GRAVITY * delta
 	
-	if not global.is_game_over():
-		_velocity.x = _move_direction.x * MOVE_SPEED
-	else:
-		_velocity.x = 0.0
+		if not global.is_game_over():
+			_velocity.x = _move_direction.x * MOVE_SPEED
+		else:
+			_velocity.x = 0.0
 	
-	if is_grounded:
-		if Input.is_action_pressed("jump"):
-			_velocity.y = -JUMP_FORCE
-			_sound_player.play("jump")
+		if is_grounded:
+			if Input.is_action_pressed("jump"):
+				_velocity.y = -JUMP_FORCE
+				_sound_player.play("jump")
 	
-	_motion = _velocity * delta
-	_motion = move(_motion)
+		_motion = _velocity * delta
+		_motion = move(_motion)
 	
-	if is_colliding():
-		var n = get_collision_normal()
-		_motion = n.slide(_motion)
-		_velocity = n.slide(_velocity)
-		move(_motion)
+		if is_colliding():
+			var n = get_collision_normal()
+			_motion = n.slide(_motion)
+			_velocity = n.slide(_velocity)
+			move(_motion)
 
 func change_move_direction_h():
 	_move_direction.x *= -1
