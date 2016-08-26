@@ -22,10 +22,11 @@ var current_floor = 1
 
 onready var tree = get_tree()
 onready var root = tree.get_root()
+onready var global = root.get_node("/root/global")
 onready var _sprite = get_node("Sprite")
 onready var _raycast = get_node("RayCast2D")
 onready var _health = get_node("health")
-onready var global = root.get_node("/root/global")
+onready var _sound_player = get_node("SamplePlayer")
 
 func _ready():
 	set_process(true)
@@ -49,6 +50,7 @@ func _fixed_process(delta):
 	if is_grounded:
 		if Input.is_action_pressed("jump"):
 			_velocity.y = -JUMP_FORCE
+			_sound_player.play("jump")
 	
 #	if OS.has_touchscreen_ui_hint():
 #		pass
@@ -96,4 +98,5 @@ func _on_Area2D_area_enter( area ):
 func _on_Area2D_body_enter( body ):
 	if body.get_groups()[0] == "totem":
 		_health.remove(1)
+		_sound_player.play("hit")
 		set_transform(start_points[current_floor - 1])
