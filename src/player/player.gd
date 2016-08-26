@@ -51,13 +51,6 @@ func _fixed_process(delta):
 			_velocity.y = -JUMP_FORCE
 			_sound_player.play("jump")
 	
-#	if OS.has_touchscreen_ui_hint():
-#		pass
-#		#Jump by touch screen
-#	else:
-#		pass
-#		#Jump by keyboard or mouse
-	
 	_motion = _velocity * delta
 	_motion = move(_motion)
 	
