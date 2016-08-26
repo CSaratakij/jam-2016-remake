@@ -29,6 +29,7 @@ onready var _sound_player = get_node("SamplePlayer")
 
 func _ready():
 	set_process(true)
+	set_process_input(true)
 	set_fixed_process(true)
 
 func _process(delta):
@@ -46,12 +47,12 @@ func _fixed_process(delta):
 			_velocity.x = _move_direction.x * MOVE_SPEED
 		else:
 			_velocity.x = 0.0
-	
+		
 		if is_grounded:
-			if Input.is_action_pressed("jump"):
+			if Input.is_action_pressed("jump") and not tree.is_paused():
 				_velocity.y = -JUMP_FORCE
 				_sound_player.play("jump")
-	
+		
 		_motion = _velocity * delta
 		_motion = move(_motion)
 	
@@ -86,7 +87,6 @@ func _on_Area2D_area_enter( area ):
 		elif area.get_name() == "floor3-1":
 			current_floor = 1
 			set_transform(start_points[current_floor - 1])
-
 
 func _on_Area2D_body_enter( body ):
 	if body.get_groups().has("totem"):
