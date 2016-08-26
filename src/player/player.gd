@@ -12,12 +12,14 @@ var _motion = Vector2()
 var is_grounded = false
 var score = 0
 var start_points = [
-					Vector2(0, 80),
-					Vector2(715, 220),
-					Vector2(0, 360)
-					]
+		Matrix32(0.0, Vector2(0, 80)),
+		Matrix32(0.0, Vector2(715, 220)),
+		Matrix32(0.0, Vector2(0, 360))
+	]
 
-onready var _move_direction = INIT_MOVE_DIRECTION
+var _move_direction = INIT_MOVE_DIRECTION
+var current_floor = 1
+
 onready var tree = get_tree()
 onready var root = tree.get_root()
 onready var _sprite = get_node("Sprite")
@@ -68,19 +70,23 @@ func _on_Area2D_area_enter( area ):
 		global.add_score(POINT)
 		
 		if area.get_name() == "floor1-2":
-			set_transform(Matrix32(0.0, start_points[1]))
+			current_floor = 2
+			set_transform(start_points[current_floor - 1])
 			change_move_direction_h()
 			_sprite.set_flip_h(true)
 		
 		elif area.get_name() == "floor2-3":
-			set_transform(Matrix32(0.0, start_points[2]))
+			current_floor = 3
+			set_transform(start_points[current_floor - 1])
 			change_move_direction_h()
 			_sprite.set_flip_h(false)
 		
 		elif area.get_name() == "floor3-1":
-			set_transform(Matrix32(0.0, start_points[0]))
+			current_floor = 1
+			set_transform(start_points[current_floor - 1])
 
 
 func _on_Area2D_body_enter( body ):
 	if body.get_groups()[0] == "totem":
 		_health.remove(1)
+		set_transform(start_points[current_floor - 1])
