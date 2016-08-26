@@ -13,5 +13,6 @@ func _ready():
 		_music_player.play()
 
 func _process(delta):
-	if not players[0].get_node("health").is_alive():
-		global.game_over()
+	if not players.empty():
+		if not players[0].get_node("health").is_alive():
+			global.game_over()

@@ -7,18 +7,17 @@ const JUMP_FORCE = 230.0
 const POINT = 1
 const INIT_MOVE_DIRECTION = Vector2(1, 1)
 
+var score = 0
 var _velocity = Vector2()
 var _motion = Vector2()
 var is_grounded = false
-var score = 0
+var _move_direction = INIT_MOVE_DIRECTION
+var current_floor = 1
 var start_points = [
 		Matrix32(0.0, Vector2(0, 80)),
 		Matrix32(0.0, Vector2(715, 220)),
 		Matrix32(0.0, Vector2(0, 360))
 	]
-
-var _move_direction = INIT_MOVE_DIRECTION
-var current_floor = 1
 
 onready var tree = get_tree()
 onready var root = tree.get_root()
@@ -75,7 +74,7 @@ func reset_move_direction():
 	_move_direction = INIT_MOVE_DIRECTION
 
 func _on_Area2D_area_enter( area ):
-	if area.get_groups()[0] == "switch_side_trigger":
+	if area.get_groups().has("switch_side_trigger"):
 		global.add_score(POINT)
 		
 		if area.get_name() == "floor1-2":
@@ -96,7 +95,7 @@ func _on_Area2D_area_enter( area ):
 
 
 func _on_Area2D_body_enter( body ):
-	if body.get_groups()[0] == "totem":
+	if body.get_groups().has("totem"):
 		_health.remove(1)
 		_sound_player.play("hit")
 		set_transform(start_points[current_floor - 1])
