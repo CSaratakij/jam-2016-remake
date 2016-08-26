@@ -28,7 +28,14 @@ onready var _health = get_node("health")
 onready var global = root.get_node("/root/global")
 
 func _ready():
+	set_process(true)
 	set_fixed_process(true)
+
+func _process(delta):
+	if global.is_game_over():
+		_sprite.hide()
+	else:
+		_sprite.show()
 
 func _fixed_process(delta):
 	is_grounded = _raycast.is_colliding()
