@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://levels/bg.jpg" type="Texture" id=2]
 [ext_resource path="res://floor/floor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://totems/totem1.png" type="Texture" id=4]
+[ext_resource path="res://totems/totem_spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://totems/totem.tscn" type="PackedScene" id=6]
-[ext_resource path="res://menu/game_menu.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ui/ui_player_status.tscn" type="PackedScene" id=8]
+[ext_resource path="res://menu/game_menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/ui_player_status.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -74,115 +73,6 @@ collision/layers = 2
 transform/pos = Vector2( 368, 404 )
 collision/layers = 2
 
-[node name="Totems[Experiment]" type="Node2D" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-
-[node name="TestTotems" type="KinematicBody2D" parent="Totems[Experiment]"]
-
-editor/display_folded = true
-transform/pos = Vector2( 295, 107 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems"]
-
-texture = ExtResource( 4 )
-
-[node name="TestTotems5" type="KinematicBody2D" parent="Totems[Experiment]"]
-
-editor/display_folded = true
-transform/pos = Vector2( 406, 109 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems5"]
-
-texture = ExtResource( 4 )
-
-[node name="TestTotems6" type="KinematicBody2D" parent="Totems[Experiment]"]
-
-editor/display_folded = true
-transform/pos = Vector2( 532, 110 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems6"]
-
-texture = ExtResource( 4 )
-
-[node name="TestTotems7" type="KinematicBody2D" parent="Totems[Experiment]"]
-
-editor/display_folded = true
-transform/pos = Vector2( 553, 110 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems7"]
-
-texture = ExtResource( 4 )
-
-[node name="TestTotems1" type="KinematicBody2D" parent="Totems[Experiment]"]
-
-editor/display_folded = true
-transform/pos = Vector2( 164, 248 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems1"]
-
-texture = ExtResource( 4 )
-
-[node name="TestTotems2" type="KinematicBody2D" parent="Totems[Experiment]"]
-
-editor/display_folded = true
-transform/pos = Vector2( 186, 248 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems2"]
-
-texture = ExtResource( 4 )
-
-[node name="TestTotems3" type="KinematicBody2D" parent="Totems[Experiment]"]
-
-editor/display_folded = true
-transform/pos = Vector2( 503, 386 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems3"]
-
-texture = ExtResource( 4 )
-
-[node name="TestTotems4" type="KinematicBody2D" parent="Totems[Experiment]"]
-
-editor/display_folded = true
-transform/pos = Vector2( 482, 386 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-
-[node name="Sprite" type="Sprite" parent="Totems[Experiment]/TestTotems4"]
-
-texture = ExtResource( 4 )
-
 [node name="SwitchSideTrigger" type="Node2D" parent="."]
 
 editor/display_folded = true
@@ -247,25 +137,44 @@ polygon = Vector2Array( -32, -86, -14, -86, -14, 76, -32, 76 )
 shape_range = Vector2( 0, 0 )
 trigger = true
 
+[node name="Totem_Spawners" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="totem_spawner" parent="Totem_Spawners" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 266, -58 )
+
+[node name="start_point" parent="Totem_Spawners/totem_spawner"]
+
+transform/pos = Vector2( 0, 144 )
+
+[node name="totem_spawner1" parent="Totem_Spawners" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 374, -58 )
+
+[node name="start_point" parent="Totem_Spawners/totem_spawner1"]
+
+transform/pos = Vector2( -162, 288 )
+
+[node name="totem_spawner2" parent="Totem_Spawners" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 536, -58 )
+
+[node name="start_point" parent="Totem_Spawners/totem_spawner2"]
+
+transform/pos = Vector2( -216, 432 )
+
 [node name="player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -4, 68 )
 
-[node name="totem" parent="." instance=ExtResource( 6 )]
+[node name="game_menu" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 253, 103 )
-
-[node name="totem1" parent="." instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 310, 244 )
-
-[node name="totem2" parent="." instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 310, 377 )
-
-[node name="game_menu" parent="." instance=ExtResource( 7 )]
-
-[node name="ui_player_status" parent="." instance=ExtResource( 8 )]
+[node name="ui_player_status" parent="." instance=ExtResource( 7 )]
 
 margin/left = 18.0
 margin/top = 16.0
@@ -273,3 +182,6 @@ margin/right = 58.0
 margin/bottom = 56.0
 
 
+[editable path="Totem_Spawners/totem_spawner"]
+[editable path="Totem_Spawners/totem_spawner1"]
+[editable path="Totem_Spawners/totem_spawner2"]

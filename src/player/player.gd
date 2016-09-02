@@ -62,6 +62,9 @@ func _fixed_process(delta):
 			_velocity = n.slide(_velocity)
 			move(_motion)
 
+func get_current_floor():
+	return current_floor
+
 func change_move_direction_h():
 	_move_direction.x *= -1
 
