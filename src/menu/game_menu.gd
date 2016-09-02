@@ -11,7 +11,14 @@ onready var btnPause = get_node("ControlButton/btnPause")
 
 func _ready():
 	set_process(true)
+	set_process_input(true)
 	_lblGamePause.hide()
+
+func _input(event):
+	if event.is_action_pressed("play"):
+		_restart_game()
+	elif event.is_action_pressed("pause"):
+		_pause_game()
 
 func _process(delta):
 	if global.is_game_over():
@@ -21,13 +28,13 @@ func _process(delta):
 		btnRestart.show()
 		btnPause.show()
 
-func _on_btnRestart_pressed():
+func _restart_game():
 	if not tree.is_paused():
 		global.reset_score()
 		global.game_start()
 		tree.reload_current_scene()
 
-func _on_btnPause_pressed():
+func _pause_game():
 	if not global.is_game_over():
 		if not tree.is_paused():
 			tree.set_pause(true)
@@ -37,3 +44,9 @@ func _on_btnPause_pressed():
 			tree.set_pause(false)
 			_lblGamePause.hide()
 			_animation_player.play("btnRestart_reapear")
+
+func _on_btnRestart_pressed():
+	_restart_game()
+
+func _on_btnPause_pressed():
+	_pause_game()

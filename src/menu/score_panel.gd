@@ -18,7 +18,10 @@ func _process(delta):
 	else:
 		hide()
 
-func _on_btnReplay_pressed():
+func _restart_game():
 	global.reset_score()
 	global.game_start()
 	tree.reload_current_scene()
+
+func _on_btnReplay_pressed():
+	_restart_game()

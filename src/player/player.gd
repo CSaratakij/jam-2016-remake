@@ -49,7 +49,7 @@ func _fixed_process(delta):
 			_velocity.x = 0.0
 		
 		if is_grounded:
-			if Input.is_action_pressed("jump") and not tree.is_paused():
+			if Input.is_action_pressed("jump"):
 				_velocity.y = -JUMP_FORCE
 				_sound_player.play("jump")
 		

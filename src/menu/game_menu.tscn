@@ -32,6 +32,7 @@ tracks/0/keys = { "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 )
 
 [node name="game_menu" type="Control"]
 
+process/pause_mode = 2
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -76,7 +77,6 @@ flat = true
 
 [node name="btnPause" type="Button" parent="ControlButton"]
 
-process/pause_mode = 2
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
