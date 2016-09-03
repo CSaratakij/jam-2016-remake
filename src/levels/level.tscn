@@ -142,7 +142,6 @@ trigger = true
 [node name="totem_spawner" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 266, -58 )
-is_invert = false
 
 [node name="start_point" parent="Totem_Spawners/totem_spawner"]
 
@@ -160,11 +159,10 @@ transform/pos = Vector2( -324, 270 )
 [node name="totem_spawner2" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 536, -58 )
-is_invert = false
 
 [node name="start_point" parent="Totem_Spawners/totem_spawner2"]
 
-transform/pos = Vector2( -342, 432 )
+transform/pos = Vector2( -342, 414 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 

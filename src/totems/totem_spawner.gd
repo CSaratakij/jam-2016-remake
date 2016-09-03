@@ -20,17 +20,14 @@ func _initialize():
 	var totem = preload("res://totems/totem.tscn").instance()
 	for i in range(MAX_OBJECT_POOLING):
 		var instance = totem.duplicate()
-		instance.set_sleeping(true)
+		instance.set_active(false)
 		instance.hide()
 		totems.append(instance)
 		call_deferred("add_child", totems[i])
 
 func spawn():
 	var step = 0
-	var min_totem = 1
-	var max_totem = 5
-	
-	var total_totem = round(rand_range(min_totem, max_totem))
+	var total_totem = round(rand_range(1, MAX_OBJECT_POOLING))
 	var offset = start_point.get_global_pos()
 	var spawn_offset = offset + Vector2(step, 0.0)
 	
@@ -38,14 +35,14 @@ func spawn():
 		if is_invert:
 			spawn_offset.x *= -1.0
 		totems[i].set_global_pos(spawn_offset)
-		totems[i].set_sleeping(false)
+		totems[i].set_active(true)
 		totems[i].show()
 		step += MIN_STEP.x
 		spawn_offset = offset + Vector2(step, 0.0)
 
 func clear():
 	for totem in totems:
-		totem.set_sleeping(true)
+		totem.set_active(false)
 		totem.hide()
 		totem.set_global_pos(get_global_pos())
 

@@ -5,6 +5,7 @@
 [node name="totem_spawner" type="Node2D"]
 
 script/script = ExtResource( 1 )
+is_invert = false
 
 [node name="start_point" type="Node2D" parent="."]
 
