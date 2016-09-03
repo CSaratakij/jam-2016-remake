@@ -1,11 +1,12 @@
 
 extends Node2D
 
-const MAX_OBJECT_POOLING = 10
-const MIN_OFFSET = Vector2(0, 0)
-const MIN_STEP  = Vector2(110.2, 0)
+const MAX_OBJECT_POOLING = 6
+#const MIN_STEP  = Vector2(110.8, 0)
+const MIN_STEP = Vector2(120, 0)
 const MAX_OFFSET = Vector2(736, 414)
-const SPAWN_MARGIN = Vector2(80, 0)
+
+export var is_invert = false
 
 var totems = []
 var is_spawn = false
@@ -14,9 +15,6 @@ onready var start_point = get_node("start_point")
 
 func _enter_tree():
 	_initialize()
-
-func _ready():
-	set_process(true)
 
 func _initialize():
 	var totem = preload("res://totems/totem.tscn").instance()
@@ -27,19 +25,29 @@ func _initialize():
 		totems.append(instance)
 		call_deferred("add_child", totems[i])
 
-func _process(delta):
-	if not is_spawn:
-		is_spawn = true
-		spawn()
-	else:
-		set_process(false)
-
 func spawn():
 	var step = 0
+	var min_totem = 1
+	var max_totem = 5
+	
+	var total_totem = round(rand_range(min_totem, max_totem))
 	var offset = start_point.get_global_pos()
-	for i in range(3):
-		var spawn_offset = offset + Vector2(step, 0.0)
+	var spawn_offset = offset + Vector2(step, 0.0)
+	
+	for i in range(total_totem):
+		if is_invert:
+			spawn_offset.x *= -1.0
 		totems[i].set_global_pos(spawn_offset)
 		totems[i].set_sleeping(false)
 		totems[i].show()
 		step += MIN_STEP.x
+		spawn_offset = offset + Vector2(step, 0.0)
+
+func clear():
+	for totem in totems:
+		totem.set_sleeping(true)
+		totem.hide()
+		totem.set_global_pos(get_global_pos())
+
+func set_invert(is_invert):
+	self.is_invert = is_invert
