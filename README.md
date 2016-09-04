@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 # jam-2016-remake
-The re-implementation of the game "KiKi - The Sacrifice" from GGJ2016 by using Godot Engine.
-=======
-# jam-2016
-KiKi - The Sacrifice on Global Game Jam 2016 (29-31 Jan 2016)
+- The re-implementation of the game "KiKi - The Sacrifice" from GGJ2016 by using Godot Engine.
+- Aim for port this game to the Andriod.
+- [Original Repository](https://github.com/jojoee/jam-2016)
 
 [![KiKi - Intro Screenshot](https://raw.githubusercontent.com/jojoee/jam-2016/gh-pages/screenshots/intro.png "KiKi - Intro screenshot")](http://jojoee.github.io/jam-2016/)
 
@@ -13,15 +11,10 @@ KiKi - The Sacrifice on Global Game Jam 2016 (29-31 Jan 2016)
 + J - [Jirashy G. Kongjinda](https://www.facebook.com/LAWGGEVOL) / [Joe Nathachai Thongniran](https://www.facebook.com/joenathachai.thongniran)
 + A - [Anisa Jaiteam](https://www.facebook.com/anisa.jaiteam)
 + M - [Munchupa Lerkprasertkul](https://www.facebook.com/yuyu.lovemom)
-+ [Chatchai Saratakij](https://www.facebook.com/chatchai.saratakij)
++ [Chatchai Saratakij](csaratakij@gmail.com)
 + [Sahapat Tong-on](https://www.facebook.com/sahapat.tongon)
 
 ## Note & Rules
-- [Play online](http://jojoee.github.io/jam-2016/)
-- [Repository](https://github.com/jojoee/jam-2016)
-- [Game play video](https://www.youtube.com/watch?v=wUZONN4H3DI)
-- [Fanpage](https://www.facebook.com/KiKi-The-Sacrifice-469973519870300/)
-- [Global Game Jam 2016 Page](http://globalgamejam.org/2016/games/kiki-sacrifice)
 - Regenerate `totem` when we going form last floor to the first floor
 - Maximum life: 3
 - Mask
@@ -31,53 +24,12 @@ KiKi - The Sacrifice on Global Game Jam 2016 (29-31 Jan 2016)
   - `life`
 
 ## TODO
-- [x] Bug: when the player was hit then it go to next floor
-- [x] Bug: when dash to the next floor
-- [x] Change warp emitter effect
-- [ ] Implement `fire`
-- [x] Implement `health`
-- [x] When new game set new `totem` and `mask`
-- [x] Add Howto
-- [x] Add video intro
-- [x] Add state transition
-- [ ] Double jump mask
 - [ ] Scoreboard
-- [ ] Upload game play video into youtube
-- [ ] Create facebook fanpage
-- [ ] Upload screenshot into facebook fanpage
-- [ ] Increase `character` / `totem` / `mask` size
-- [x] Decrease fade effect time on `howto` state
-- [x] Change life label from `number` to `image`
-- [ ] Change current mask label from `text` to `image`
-- [ ] Set background color when ShakeScreen
-- [ ] Port to mobile
-- [ ] Add github's ribbon
-- [ ] Support mobile
+- [ ] Port to Andriod
 
 ## Controls
+`left-click`, `tab`, `up`, `space` : jump and fire
 
-`left-click`, `tab`, `up`, `space` to jump and fire
-
-## Getting Started
-1. Set path (e.g. `cd C:\xampp\htdocs\jojoee.com\jam-2016`)
-2. Install global - `npm install -g bower gulp browser-sync`
-3. Install dependencies - `bower install && npm install`
-
-## Ref & Thank
-- [Global Game Jam](http://globalgamejam.org/)
-- [Thai Game Jam 2016](http://www.itemonline.net/ggj2016/)
-- [Rangsit University](http://globalgamejam.org/2015/jam-sites/rangsit-university)
-- [viewportsizes.com](http://viewportsizes.com/)
-- [phaser-state-transition](https://github.com/aaccurso/phaser-state-transition-plugin)
-- [Addthis](https://www.addthis.com/)
-- [Phaser](http://phaser.io/)
-- [phaser-screen-shake](https://github.com/dmaslov/phaser-screen-shake)
-- [Phaser Debug](https://github.com/englercj/phaser-debug)
-- [Favicon Generator](http://realfavicongenerator.net/)
-- [W3C - Markup Validation Service](https://validator.w3.org/)
-- Sound: [lessmilk.com](http://www.lessmilk.com/), [super-coin-box](https://github.com/dmaslov/super-coin-box)
+## 3rd party's assets
+- Sound: [lessmilk.com](http://www.lessmilk.com/),[super-coin-box](https://github.com/dmaslov/super-coin-box)
 - Font: [Permanent Marker](https://www.google.com/fonts/specimen/Permanent+Marker)
-
-## Notes
-This fork is in-progress to remake this game from the 48 hour jam of Global Game Jam 2016 by using GodotEngine v.2.1 stable to fix the bug and make it easier to port this game to the mobile (andriod) :)
->>>>>>> remake
