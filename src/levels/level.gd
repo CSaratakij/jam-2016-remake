@@ -11,15 +11,19 @@ onready var _music_player = root.get_node("/root/music_player")
 onready var players = tree.get_nodes_in_group("player")
 onready var totem_spawners = get_node("Totem_Spawners").get_children()
 
+var is_init_spawn = false
+
 func _ready():
 	set_process(true)
 	if not _music_player.is_playing():
 		_music_player.play()
-	_spawn_totem()
 	previous_floor = players[0].get_current_floor()
 	current_floor = previous_floor
 
 func _process(delta):
+	if not is_init_spawn:
+		_spawn_totem()
+		is_init_spawn = true
 	if not players.empty():
 		current_floor = players[0].get_current_floor()
 		if current_floor != previous_floor:

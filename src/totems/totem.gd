@@ -11,7 +11,7 @@ onready var _collision = get_node("CollisionShape2D")
 
 func _ready():
 	set_fixed_process(true)
-
+	
 func _fixed_process(delta):
 	_collision.set_trigger(not is_active)
 	if is_active:
@@ -19,5 +19,5 @@ func _fixed_process(delta):
 		motion = velocity * delta
 		move(motion)
 
-func set_active(is_active):
-	self.is_active = is_active
+func set_active(active):
+	is_active = active

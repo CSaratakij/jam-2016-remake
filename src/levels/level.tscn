@@ -3,7 +3,7 @@
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://levels/bg.jpg" type="Texture" id=2]
 [ext_resource path="res://floor/floor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://totems/totem_spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://spawner/totem_spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://menu/game_menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/ui_player_status.tscn" type="PackedScene" id=7]
@@ -139,35 +139,41 @@ trigger = true
 
 [node name="Totem_Spawners" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="totem_spawner" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
-editor/display_folded = true
-transform/pos = Vector2( 266, -58 )
+transform/pos = Vector2( 992, 72 )
 
 [node name="start_point" parent="Totem_Spawners/totem_spawner"]
 
-transform/pos = Vector2( -36, 144 )
+transform/pos = Vector2( -800, 10 )
+
+[node name="end_point" parent="Totem_Spawners/totem_spawner"]
+
+transform/pos = Vector2( -310, 10 )
 
 [node name="totem_spawner1" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
-editor/display_folded = true
-transform/pos = Vector2( 374, -58 )
-is_invert = true
+transform/pos = Vector2( 992, 192 )
 
 [node name="start_point" parent="Totem_Spawners/totem_spawner1"]
 
-transform/pos = Vector2( -324, 270 )
+transform/pos = Vector2( -960, 30 )
+
+[node name="end_point" parent="Totem_Spawners/totem_spawner1"]
+
+transform/pos = Vector2( -420, 30 )
 
 [node name="totem_spawner2" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
-editor/display_folded = true
-transform/pos = Vector2( 536, -58 )
+transform/pos = Vector2( 982, 352 )
 
 [node name="start_point" parent="Totem_Spawners/totem_spawner2"]
 
-transform/pos = Vector2( -342, 414 )
+transform/pos = Vector2( -780, 10 )
+
+[node name="end_point" parent="Totem_Spawners/totem_spawner2"]
+
+transform/pos = Vector2( -300, 10 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 
