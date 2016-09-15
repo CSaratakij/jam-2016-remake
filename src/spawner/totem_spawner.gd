@@ -31,8 +31,10 @@ func spawn():
 	var max_start_offset = start_point.get_global_pos() + Vector2(MIN_STEP / 2, 0)
 	var start_offset = Vector2(rand_range(start_point.get_global_pos().x, max_start_offset.x), max_start_offset.y)
 	var current_spawn_point = start_offset
+	var totem_type_index = int(rand_range(0, 3))
 	
 	spawned_totems.append(totems[0])
+	spawned_totems[0].set_type(totem_type_index)
 	spawned_totems[0].set_global_pos(current_spawn_point)
 	spawned_totems[0].set_active(true)
 	spawned_totems[0].show()
@@ -43,6 +45,7 @@ func spawn():
 		
 		if spawned_index < MAX_OBJECT_POOLING:
 			is_stack_able = current_totem_stack < MAX_TOTEM_STACK
+			totem_type_index = int(rand_range(0, 3))
 			
 			var is_enable_stack = int(rand_range(0, 2)) == 1
 			var step_multipler = int(rand_range(1, 3))
@@ -59,6 +62,7 @@ func spawn():
 					break
 			
 			spawned_totems.append(totems[ spawned_index ])
+			spawned_totems[ spawned_index ].set_type(totem_type_index)
 			spawned_totems[ spawned_index ].set_global_pos(current_spawn_point)
 			spawned_totems[ spawned_index ].set_active(true)
 			spawned_totems[ spawned_index ].show()
