@@ -20,6 +20,7 @@ onready var _collision = get_node("CollisionShape2D")
 
 func _ready():
 	set_fixed_process(true)
+	_sprite.set_texture(totem_sprites[ type_id ])
 
 func _fixed_process(delta):
 	_collision.set_trigger(not is_active)
@@ -33,7 +34,7 @@ func set_active(active):
 
 func set_type(index):
 	type_id = index
-	_sprite.set_texture(totem_sprites[index])
+	_sprite.set_texture(totem_sprites[ index ])
 
 func max_type():
 	return totem_sprites.size()
