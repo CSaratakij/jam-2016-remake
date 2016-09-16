@@ -3,8 +3,7 @@ extends KinematicBody2D
 
 const GRAVITY = 180
 
-export var type_id = 0
-
+var type_id = 0
 var is_active = false
 var velocity = Vector2()
 var motion = Vector2()

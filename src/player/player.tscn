@@ -13,7 +13,7 @@ extents = Vector2( 2.14531, 0.479256 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 11.4197, 16.511 )
+extents = Vector2( 4.88787, 16.511 )
 
 [sub_resource type="Animation" id=3]
 
