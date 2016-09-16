@@ -9,7 +9,7 @@ var is_active = false
 var velocity = Vector2()
 var motion = Vector2()
 
-var totem_sprites = [
+var totem_textures = [
 	preload("res://totems/totem1.png"),
 	preload("res://totems/totem2.png"),
 	preload("res://totems/totem3.png")
@@ -20,7 +20,7 @@ onready var _collision = get_node("CollisionShape2D")
 
 func _ready():
 	set_fixed_process(true)
-	_sprite.set_texture(totem_sprites[ type_id ])
+	set_type(type_id)
 
 func _fixed_process(delta):
 	_collision.set_trigger(not is_active)
@@ -34,7 +34,7 @@ func set_active(active):
 
 func set_type(index):
 	type_id = index
-	_sprite.set_texture(totem_sprites[ index ])
+	_sprite.set_texture(totem_textures[ index ])
 
 func max_type():
-	return totem_sprites.size()
+	return totem_textures.size()
