@@ -72,7 +72,8 @@ func reset_move_direction():
 	_move_direction = INIT_MOVE_DIRECTION
 
 func _on_Area2D_area_enter( area ):
-	if area.get_groups().has("switch_side_trigger"):
+	var areas = area.get_groups()
+	if areas.has("switch_side_trigger"):
 		global.add_score(POINT)
 		
 		if area.get_name() == "floor1-2":
@@ -90,9 +91,12 @@ func _on_Area2D_area_enter( area ):
 		elif area.get_name() == "floor3-1":
 			current_floor = 1
 			set_transform(start_points[current_floor - 1])
+	elif areas.has("health"):
+		_health.restore(1)
 
 func _on_Area2D_body_enter( body ):
-	if body.get_groups().has("totem"):
+	var groups = body.get_groups()
+	if groups.has("totem"):
 		_health.remove(1)
 		_sound_player.play("hit")
 		set_transform(start_points[current_floor - 1])
