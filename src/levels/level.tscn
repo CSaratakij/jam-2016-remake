@@ -138,46 +138,41 @@ trigger = true
 
 [node name="Totem_Spawners" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="totem_spawner" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 992, 72 )
 
 [node name="start_point" parent="Totem_Spawners/totem_spawner"]
 
-transform/pos = Vector2( -800, 10 )
+transform/pos = Vector2( -769.871, 10 )
 
 [node name="end_point" parent="Totem_Spawners/totem_spawner"]
 
-transform/pos = Vector2( -310, 10 )
+transform/pos = Vector2( -278.037, 10 )
 
 [node name="totem_spawner1" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 992, 192 )
 
 [node name="start_point" parent="Totem_Spawners/totem_spawner1"]
 
-transform/pos = Vector2( -960, 30 )
+transform/pos = Vector2( -895.448, 30 )
 
 [node name="end_point" parent="Totem_Spawners/totem_spawner1"]
 
-transform/pos = Vector2( -420, 30 )
+transform/pos = Vector2( -430.489, 30 )
 
 [node name="totem_spawner2" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 982, 352 )
 
 [node name="start_point" parent="Totem_Spawners/totem_spawner2"]
 
-transform/pos = Vector2( -780, 10 )
+transform/pos = Vector2( -761.162, 10 )
 
 [node name="end_point" parent="Totem_Spawners/totem_spawner2"]
 
-transform/pos = Vector2( -300, 10 )
+transform/pos = Vector2( -318.114, 10 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 
