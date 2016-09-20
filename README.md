@@ -1,4 +1,6 @@
 # jam-2016-remake
+
+[![Join the chat at https://gitter.im/jam-2016-remake/Lobby](https://badges.gitter.im/jam-2016-remake/Lobby.svg)](https://gitter.im/jam-2016-remake/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 - The re-implementation of the game "KiKi - The Sacrifice" from GGJ2016 by using Godot Engine.
 - Aim for port this game to Andriod, Window and Linux.
 - [Original Repository](https://github.com/jojoee/jam-2016)
