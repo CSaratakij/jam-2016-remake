@@ -1,5 +1,13 @@
-[gd_scene format=1]
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://spawner/item_spawner.gd" type="Script" id=1]
 
 [node name="item_spawner" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="start_point" type="Node2D" parent="."]
+
+[node name="end_point" type="Node2D" parent="."]
 
 

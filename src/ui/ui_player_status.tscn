@@ -8,6 +8,7 @@
 
 [node name="ui_player_status" type="Control"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -19,6 +20,7 @@ margin/bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -70,6 +72,7 @@ region_rect = Rect2( 0, 0, 60, 20 )
 
 [node name="Mask" type="HBoxContainer" parent="VBoxContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -101,7 +104,6 @@ max_lines_visible = -1
 [node name="Sprite" type="Sprite" parent="VBoxContainer/Mask"]
 
 transform/pos = Vector2( 52.7023, -2 )
-transform/scale = Vector2( 1, 1 )
 centered = false
 region = true
 region_rect = Rect2( 0, 0, 20, 20 )

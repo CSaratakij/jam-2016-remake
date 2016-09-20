@@ -97,6 +97,9 @@ func _on_Area2D_area_enter( area ):
 			set_transform(start_points[current_floor - 1])
 	elif areas.has("health"):
 		_health.restore(1)
+		
+	elif areas.has("mask"):
+		current_mask = area.get_type()
 
 func _on_Area2D_body_enter( body ):
 	var groups = body.get_groups()

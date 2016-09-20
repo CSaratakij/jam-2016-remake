@@ -2,10 +2,7 @@
 extends HBoxContainer
 
 const types = preload("res://mask/mask.gd").types
-const type_textures = {
-	types[0] : preload("res://mask/mask-dash.png"),
-	types[1] : preload("res://mask/mask-dig.png"),
-}
+const type_textures = preload("res://mask/mask.gd").type_textures
 
 var current_mask = ""
 var previous_mask = ""
