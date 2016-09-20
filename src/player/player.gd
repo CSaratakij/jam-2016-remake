@@ -13,6 +13,7 @@ var _motion = Vector2()
 var is_grounded = false
 var _move_direction = INIT_MOVE_DIRECTION
 var current_floor = 1
+var current_mask = ""
 var start_points = [
 		Matrix32(0.0, Vector2(0, 80)),
 		Matrix32(0.0, Vector2(715, 220)),
@@ -64,6 +65,9 @@ func _fixed_process(delta):
 
 func get_current_floor():
 	return current_floor
+
+func get_current_mask():
+	return current_mask
 
 func change_move_direction_h():
 	_move_direction.x *= -1

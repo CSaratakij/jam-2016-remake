@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://ui/ui_life.gd" type="Script" id=1]
 [ext_resource path="res://font/UI_Player_Status.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://health/item-life.tex" type="Texture" id=3]
-[ext_resource path="res://ui/ui_score.gd" type="Script" id=4]
+[ext_resource path="res://ui/ui_mask.gd" type="Script" id=4]
+[ext_resource path="res://ui/ui_score.gd" type="Script" id=5]
 
 [node name="ui_player_status" type="Control"]
 
@@ -30,6 +31,7 @@ alignment = 0
 
 [node name="Life" type="HBoxContainer" parent="VBoxContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -68,7 +70,6 @@ region_rect = Rect2( 0, 0, 60, 20 )
 
 [node name="Mask" type="HBoxContainer" parent="VBoxContainer"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -78,6 +79,7 @@ margin/top = 22.0
 margin/right = 52.0
 margin/bottom = 40.0
 alignment = 0
+script/script = ExtResource( 4 )
 
 [node name="lblMask" type="Label" parent="VBoxContainer/Mask"]
 
@@ -96,6 +98,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Sprite" type="Sprite" parent="VBoxContainer/Mask"]
+
+transform/pos = Vector2( 52.7023, -2 )
+transform/scale = Vector2( 1, 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 20, 20 )
+
 [node name="Score" type="HBoxContainer" parent="."]
 
 editor/display_folded = true
@@ -108,7 +118,7 @@ margin/top = 380.0
 margin/right = 70.0
 margin/bottom = 398.0
 alignment = 0
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 
 [node name="lblScore" type="Label" parent="Score"]
 
