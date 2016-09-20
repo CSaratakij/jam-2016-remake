@@ -1,8 +1,9 @@
 
 extends HBoxContainer
 
-const types = preload("res://mask/mask.gd").types
-const type_textures = preload("res://mask/mask.gd").type_textures
+const mask = preload("res://mask/mask.gd")
+const types = mask.types
+const type_textures = mask.type_textures
 
 var current_mask = ""
 var previous_mask = ""
