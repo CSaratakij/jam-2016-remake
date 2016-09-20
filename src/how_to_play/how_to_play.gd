@@ -1,7 +1,7 @@
 
 extends Control
 
-const NEXT_SCENE_PATH = "res://levels/level.tscn"
+const NEXT_SCENE = preload("res://levels/level.tscn")
 
 onready var tree = get_tree()
 
@@ -10,4 +10,4 @@ func _ready():
 
 func _input(event):
 	if event.is_pressed():
-		tree.change_scene(NEXT_SCENE_PATH)
+		tree.change_scene(NEXT_SCENE.get_path())
