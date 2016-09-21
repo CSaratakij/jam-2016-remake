@@ -92,9 +92,13 @@ func _on_Area2D_area_enter( area ):
 		set_transform(start_points[current_floor - 1])
 	elif areas.has("health"):
 		_health.restore(1)
+		area.hide()
+		area.set_global_pos(area.get_parent().get_global_pos())
 		
 	elif areas.has("mask"):
 		current_mask = area.get_type()
+		area.hide()
+		area.set_global_pos(area.get_parent().get_global_pos())
 
 func _on_Area2D_body_enter( body ):
 	var groups = body.get_groups()
