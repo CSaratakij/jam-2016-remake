@@ -7,6 +7,8 @@ onready var tree = get_tree()
 onready var _video_player = get_node("VideoPlayer")
 
 func _ready():
+	if OS.get_name() == "Android":
+			tree.set_auto_accept_quit(false)
 	set_process(true)
 	set_process_input(true)
 

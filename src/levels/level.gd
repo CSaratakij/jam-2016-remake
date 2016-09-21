@@ -20,6 +20,10 @@ func _ready():
 	previous_floor = players[0].get_current_floor()
 	current_floor = previous_floor
 
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		pass
+
 func _process(delta):
 	if not is_init_spawn:
 		_spawn_totem()

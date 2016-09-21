@@ -79,22 +79,17 @@ func _on_Area2D_area_enter( area ):
 	var areas = area.get_groups()
 	if areas.has("switch_side_trigger"):
 		global.add_score(POINT)
-		
 		if area.get_name() == "floor1-2":
 			current_floor = 2
-			set_transform(start_points[current_floor - 1])
 			change_move_direction_h()
 			_sprite.set_flip_h(true)
-		
 		elif area.get_name() == "floor2-3":
 			current_floor = 3
-			set_transform(start_points[current_floor - 1])
 			change_move_direction_h()
 			_sprite.set_flip_h(false)
-		
 		elif area.get_name() == "floor3-1":
 			current_floor = 1
-			set_transform(start_points[current_floor - 1])
+		set_transform(start_points[current_floor - 1])
 	elif areas.has("health"):
 		_health.restore(1)
 		

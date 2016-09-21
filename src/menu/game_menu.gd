@@ -14,6 +14,10 @@ func _ready():
 	set_process_input(true)
 	_lblGamePause.hide()
 
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		_pause_game()
+
 func _input(event):
 	if event.is_action_pressed("play"):
 		_restart_game()

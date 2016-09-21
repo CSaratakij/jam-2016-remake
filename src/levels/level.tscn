@@ -182,8 +182,11 @@ transform/pos = Vector2( -318.114, 10 )
 
 [node name="Item_Spawners" type="Node2D" parent="."]
 
+editor/display_folded = true
+
 [node name="item_spawner" parent="Item_Spawners" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 892, 62 )
 
 [node name="start_point" parent="Item_Spawners/item_spawner"]
@@ -191,6 +194,32 @@ transform/pos = Vector2( 892, 62 )
 transform/pos = Vector2( -760, 20 )
 
 [node name="end_point" parent="Item_Spawners/item_spawner"]
+
+transform/pos = Vector2( -200, 20 )
+
+[node name="item_spawner1" parent="Item_Spawners" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 902, 192 )
+
+[node name="start_point" parent="Item_Spawners/item_spawner1"]
+
+transform/pos = Vector2( -860, 30 )
+
+[node name="end_point" parent="Item_Spawners/item_spawner1"]
+
+transform/pos = Vector2( -330, 30 )
+
+[node name="item_spawner2" parent="Item_Spawners" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 892, 342 )
+
+[node name="start_point" parent="Item_Spawners/item_spawner2"]
+
+transform/pos = Vector2( -640, 20 )
+
+[node name="end_point" parent="Item_Spawners/item_spawner2"]
 
 transform/pos = Vector2( -200, 20 )
 
@@ -212,3 +241,5 @@ margin/bottom = 56.0
 [editable path="Totem_Spawners/totem_spawner1"]
 [editable path="Totem_Spawners/totem_spawner2"]
 [editable path="Item_Spawners/item_spawner"]
+[editable path="Item_Spawners/item_spawner1"]
+[editable path="Item_Spawners/item_spawner2"]

@@ -11,7 +11,6 @@ const ITEMS = [
 var healths = []
 var masks = []
 var spawned_list = []
-var current_spawned_index = 0
 
 onready var start_point = get_node("start_point")
 onready var end_point = get_node("end_point")
@@ -28,7 +27,7 @@ func _ready():
 
 func spawn():
 	var total_spawn = int(rand_range(0, MAX_ITEMS_PER_FLOOR + 1))
-	for index in range(total_spawn):
+	for item in range(total_spawn):
 		var random_item_id = int(rand_range(0, ITEMS.size()))
 		if random_item_id == 0:
 			spawned_list.append(healths[ random_item_id ])
