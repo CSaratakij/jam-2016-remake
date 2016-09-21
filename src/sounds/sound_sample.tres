@@ -1,12 +1,14 @@
-[gd_resource type="SampleLibrary" load_steps=4 format=1]
+[gd_resource type="SampleLibrary" load_steps=5 format=1]
 
 [ext_resource path="res://sounds/bonus.wav" type="Sample" id=1]
 [ext_resource path="res://sounds/hit.wav" type="Sample" id=2]
-[ext_resource path="res://sounds/jump.wav" type="Sample" id=3]
+[ext_resource path="res://sounds/item.wav" type="Sample" id=3]
+[ext_resource path="res://sounds/jump.wav" type="Sample" id=4]
 
 [resource]
 
 samples/bonus = { "db":0.0, "pitch":1.0, "sample":ExtResource( 1 ) }
 samples/hit = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
-samples/jump = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/item = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/jump = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
 

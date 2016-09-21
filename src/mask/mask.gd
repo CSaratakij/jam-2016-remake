@@ -6,7 +6,7 @@ const types = [
 	"Dig",
 	"None"
 	]
-	
+
 const type_textures = {
 	types[0] : preload("res://mask/mask-dash.png"),
 	types[1] : preload("res://mask/mask-dig.png"),

@@ -26,7 +26,10 @@ onready var global = root.get_node("/root/global")
 onready var _sprite = get_node("Sprite")
 onready var _raycast = get_node("RayCast2D")
 onready var _health = get_node("health")
-onready var _sound_player = get_node("SamplePlayer")
+onready var _sound_player = {
+	"player" : get_node("SamplePlayer/Player"),
+	"item" : get_node("SamplePlayer/Item")
+}
 
 func _ready():
 	set_process(true)
@@ -52,7 +55,7 @@ func _fixed_process(delta):
 		if is_grounded:
 			if Input.is_action_pressed("jump"):
 				_velocity.y = -JUMP_FORCE
-				_sound_player.play("jump")
+				_sound_player[ "player" ].play("jump")
 		
 		_motion = _velocity * delta
 		_motion = move(_motion)
@@ -92,11 +95,13 @@ func _on_Area2D_area_enter( area ):
 		set_transform(start_points[current_floor - 1])
 	elif areas.has("health"):
 		_health.restore(1)
+		_sound_player[ "item" ].play("item")
 		area.hide()
 		area.set_global_pos(area.get_parent().get_global_pos())
 		
 	elif areas.has("mask"):
 		current_mask = area.get_type()
+		_sound_player[ "item" ].play("bonus")
 		area.hide()
 		area.set_global_pos(area.get_parent().get_global_pos())
 
@@ -104,5 +109,5 @@ func _on_Area2D_body_enter( body ):
 	var groups = body.get_groups()
 	if groups.has("totem"):
 		_health.remove(1)
-		_sound_player.play("hit")
+		_sound_player[ "player" ].play("hit")
 		set_transform(start_points[current_floor - 1])
