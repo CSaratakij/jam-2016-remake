@@ -16,7 +16,8 @@ func _ready():
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		_pause_game()
+		if OS.get_name() == "Android":
+			_pause_game()
 
 func _input(event):
 	if event.is_action_pressed("play"):
