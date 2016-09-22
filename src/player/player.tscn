@@ -132,6 +132,13 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = false
+
 [connection signal="area_enter" from="Area2D" to="." method="_on_Area2D_area_enter"]
 
 [connection signal="body_enter" from="Area2D" to="." method="_on_Area2D_body_enter"]

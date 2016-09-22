@@ -1,6 +1,7 @@
 
 extends KinematicBody2D
 
+const mask_types = preload("res://mask/mask.gd").types
 const GRAVITY = 980.0
 const MOVE_SPEED = 240.0
 const JUMP_FORCE = 230.0
@@ -19,6 +20,8 @@ var start_points = [
 		Matrix32(0.0, Vector2(715, 220)),
 		Matrix32(0.0, Vector2(0, 360))
 	]
+var is_activate_mask = false
+var total_released_jump = 0
 
 onready var tree = get_tree()
 onready var root = tree.get_root()
@@ -30,11 +33,26 @@ onready var _sound_player = {
 	"player" : get_node("SamplePlayer/Player"),
 	"item" : get_node("SamplePlayer/Item")
 }
+onready var _timer = get_node("Timer")
 
 func _ready():
 	set_process(true)
 	set_process_input(true)
 	set_fixed_process(true)
+
+func _input(event):
+	if event.type == InputEvent.MOUSE_BUTTON:
+		is_activate_mask = event.doubleclick
+	else:
+		if event.is_action_pressed("jump"):
+			if _timer.get_time_left() == 0:
+				_timer.start()
+		if event.is_action_released("jump"):
+			total_released_jump += 1
+			if total_released_jump == 2:
+				is_activate_mask = _timer.get_time_left() != 0
+				_timer.stop()
+				total_released_jump = 0
 
 func _process(delta):
 	if global.is_game_over():
@@ -56,6 +74,16 @@ func _fixed_process(delta):
 			if Input.is_action_pressed("jump"):
 				_velocity.y = -JUMP_FORCE
 				_sound_player[ "player" ].play("jump")
+		
+		if is_activate_mask:
+			if current_mask == mask_types[0]:
+				_velocity.y = 0.0
+				_velocity.x += 600 * _move_direction.x
+				pass
+			elif current_mask == mask_types[1]:
+				pass
+			current_mask = ""
+			is_activate_mask = false
 		
 		_motion = _velocity * delta
 		_motion = move(_motion)
