@@ -80,6 +80,7 @@ editor/display_folded = true
 
 [node name="floor1-2" type="Area2D" parent="SwitchSideTrigger" groups=[ "switch_side_trigger" ]]
 
+editor/display_folded = true
 transform/pos = Vector2( 806, 86 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
@@ -138,6 +139,8 @@ shape_range = Vector2( 0, 0 )
 trigger = true
 
 [node name="Totem_Spawners" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="totem_spawner" parent="Totem_Spawners" instance=ExtResource( 4 )]
 

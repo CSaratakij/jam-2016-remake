@@ -20,9 +20,14 @@ var current_mask = ""
 var current_using_mask = ""
 var using_mask_pos = Vector2()
 var start_points = [
-		Matrix32(0.0, Vector2(0, 80)),
-		Matrix32(0.0, Vector2(715, 220)),
-		Matrix32(0.0, Vector2(0, 360))
+		Vector2(0, 80),
+		Vector2(715, 220),
+		Vector2(0, 360)
+	]
+var max_height_floors = [
+		Vector2(0, 50),
+		Vector2(0, 180),
+		Vector2(0, 320)
 	]
 var is_activate_mask = false
 var is_using_mask = false
@@ -34,7 +39,7 @@ onready var global = root.get_node("/root/global")
 onready var _sprite = get_node("Sprite")
 onready var _raycast = get_node("RayCast2D")
 onready var _health = get_node("health")
-onready var _sound_player = {
+onready var _sound_players = {
 	"player" : get_node("SamplePlayer/Player"),
 	"item" : get_node("SamplePlayer/Item")
 }
@@ -75,15 +80,18 @@ func _fixed_process(delta):
 				is_using_mask = true
 				is_activate_mask = false
 			if is_using_mask and not current_using_mask == "":
-				if current_using_mask == mask_types[0]:
+				if current_using_mask == mask_types[ 0 ]:
 					_velocity.y = 0.0
 					_velocity.x = DASH_SPEED * _move_direction.x
 					if abs(get_global_pos().distance_to(using_mask_pos)) > totem_minimum_interval * 1.5:
-						current_using_mask = ""
-						is_using_mask = false
-				elif current_using_mask == mask_types[1]:
-					current_using_mask = ""
-					is_using_mask = false
+						stop_using_mask()
+				elif current_using_mask == mask_types[ 1 ]:
+					if current_floor == 3:
+						change_floor(1)
+					else:
+						change_floor(current_floor + 1)
+					set_global_pos(Vector2(get_global_pos().x, max_height_floors[ current_floor - 1].y))
+					stop_using_mask()
 			else:
 				is_grounded = _raycast.is_colliding()
 				_velocity.y += _move_direction.y * GRAVITY * delta
@@ -91,7 +99,7 @@ func _fixed_process(delta):
 				if is_grounded:
 					if Input.is_action_pressed("jump"):
 						_velocity.y = -JUMP_FORCE
-						_sound_player[ "player" ].play("jump")
+						_sound_players[ "player" ].play("jump")
 		else:
 			_velocity = Vector2(0, 0)
 		
@@ -113,35 +121,43 @@ func get_current_mask():
 func change_move_direction_h():
 	_move_direction.x *= -1
 
+func change_floor(next_floor):
+	current_floor = next_floor
+	if current_floor == 2:
+		change_move_direction_h()
+		_sprite.set_flip_h(true)
+	elif current_floor == 3:
+		change_move_direction_h()
+		_sprite.set_flip_h(false)
+
 func reset_move_direction():
 	_move_direction = INIT_MOVE_DIRECTION
+
+func stop_using_mask():
+	current_using_mask = ""
+	is_using_mask = false
 
 func _on_Area2D_area_enter( area ):
 	var areas = area.get_groups()
 	if areas.has("switch_side_trigger"):
 		global.add_score(POINT)
-		current_using_mask = ""
-		is_using_mask = false
+		stop_using_mask()
 		if area.get_name() == "floor1-2":
-			current_floor = 2
-			change_move_direction_h()
-			_sprite.set_flip_h(true)
+			change_floor(2)
 		elif area.get_name() == "floor2-3":
-			current_floor = 3
-			change_move_direction_h()
-			_sprite.set_flip_h(false)
+			change_floor(3)
 		elif area.get_name() == "floor3-1":
-			current_floor = 1
-		set_transform(start_points[current_floor - 1])
+			change_floor(1)
+		set_global_pos(start_points[ current_floor - 1])
 	elif areas.has("health"):
 		_health.restore(1)
-		_sound_player[ "item" ].play("item")
+		_sound_players[ "item" ].play("item")
 		area.hide()
 		area.set_global_pos(area.get_parent().get_global_pos())
 		
 	elif areas.has("mask"):
 		current_mask = area.get_type()
-		_sound_player[ "item" ].play("bonus")
+		_sound_players[ "item" ].play("bonus")
 		area.hide()
 		area.set_global_pos(area.get_parent().get_global_pos())
 
@@ -149,5 +165,5 @@ func _on_Area2D_body_enter( body ):
 	var groups = body.get_groups()
 	if groups.has("totem"):
 		_health.remove(1)
-		_sound_player[ "player" ].play("hit")
-		set_transform(start_points[current_floor - 1])
+		_sound_players[ "player" ].play("hit")
+		set_global_pos(start_points[ current_floor - 1 ])
