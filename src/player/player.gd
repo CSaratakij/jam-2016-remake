@@ -2,8 +2,10 @@
 extends KinematicBody2D
 
 const mask_types = preload("res://mask/mask.gd").types
+const totem_minimum_interval = preload("res://spawner/totem_spawner.gd").MIN_STEP
 const GRAVITY = 980.0
 const MOVE_SPEED = 240.0
+const DASH_SPEED = 900.0
 const JUMP_FORCE = 230.0
 const POINT = 1
 const INIT_MOVE_DIRECTION = Vector2(1, 1)
@@ -15,12 +17,15 @@ var is_grounded = false
 var _move_direction = INIT_MOVE_DIRECTION
 var current_floor = 1
 var current_mask = ""
+var current_using_mask = ""
+var using_mask_pos = Vector2()
 var start_points = [
 		Matrix32(0.0, Vector2(0, 80)),
 		Matrix32(0.0, Vector2(715, 220)),
 		Matrix32(0.0, Vector2(0, 360))
 	]
 var is_activate_mask = false
+var is_using_mask = false
 var total_released_jump = 0
 
 onready var tree = get_tree()
@@ -62,28 +67,33 @@ func _process(delta):
 
 func _fixed_process(delta):
 	if _health.is_alive():
-		is_grounded = _raycast.is_colliding()
-		_velocity.y += _move_direction.y * GRAVITY * delta
-	
 		if not global.is_game_over():
-			_velocity.x = _move_direction.x * MOVE_SPEED
+			if is_activate_mask:
+				using_mask_pos = get_global_pos()
+				current_using_mask = current_mask
+				current_mask = ""
+				is_using_mask = true
+				is_activate_mask = false
+			if is_using_mask and not current_using_mask == "":
+				if current_using_mask == mask_types[0]:
+					_velocity.y = 0.0
+					_velocity.x = DASH_SPEED * _move_direction.x
+					if abs(get_global_pos().distance_to(using_mask_pos)) > totem_minimum_interval * 1.5:
+						current_using_mask = ""
+						is_using_mask = false
+				elif current_using_mask == mask_types[1]:
+					current_using_mask = ""
+					is_using_mask = false
+			else:
+				is_grounded = _raycast.is_colliding()
+				_velocity.y += _move_direction.y * GRAVITY * delta
+				_velocity.x = _move_direction.x * MOVE_SPEED
+				if is_grounded:
+					if Input.is_action_pressed("jump"):
+						_velocity.y = -JUMP_FORCE
+						_sound_player[ "player" ].play("jump")
 		else:
-			_velocity.x = 0.0
-		
-		if is_grounded:
-			if Input.is_action_pressed("jump"):
-				_velocity.y = -JUMP_FORCE
-				_sound_player[ "player" ].play("jump")
-		
-		if is_activate_mask:
-			if current_mask == mask_types[0]:
-				_velocity.y = 0.0
-				_velocity.x += 600 * _move_direction.x
-				pass
-			elif current_mask == mask_types[1]:
-				pass
-			current_mask = ""
-			is_activate_mask = false
+			_velocity = Vector2(0, 0)
 		
 		_motion = _velocity * delta
 		_motion = move(_motion)
@@ -110,6 +120,8 @@ func _on_Area2D_area_enter( area ):
 	var areas = area.get_groups()
 	if areas.has("switch_side_trigger"):
 		global.add_score(POINT)
+		current_using_mask = ""
+		is_using_mask = false
 		if area.get_name() == "floor1-2":
 			current_floor = 2
 			change_move_direction_h()
