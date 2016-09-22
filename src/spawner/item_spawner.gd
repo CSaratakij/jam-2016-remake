@@ -1,7 +1,7 @@
 
 extends Node2D
 
-const MAX_ITEMS_PER_FLOOR = 3
+const MAX_ITEMS_PER_FLOOR = 4
 const STEP = Vector2(100, 0)
 const ITEMS = [
 	preload("res://health/health.tscn"),
@@ -25,6 +25,7 @@ func _ready():
 		add_child(masks[ index ])
 
 func spawn():
+	randomize()
 	var total_spawn = int(rand_range(0, MAX_ITEMS_PER_FLOOR + 1))
 	for index in range(total_spawn):
 		var random_item_id = int(rand_range(0, ITEMS.size()))

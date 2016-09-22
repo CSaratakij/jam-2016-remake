@@ -139,8 +139,6 @@ trigger = true
 
 [node name="Totem_Spawners" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="totem_spawner" parent="Totem_Spawners" instance=ExtResource( 4 )]
 
 editor/display_folded = true
@@ -165,7 +163,7 @@ transform/pos = Vector2( -895.448, 30 )
 
 [node name="end_point" parent="Totem_Spawners/totem_spawner1"]
 
-transform/pos = Vector2( -430.489, 30 )
+transform/pos = Vector2( -480, 30 )
 
 [node name="totem_spawner2" parent="Totem_Spawners" instance=ExtResource( 4 )]
 

@@ -28,6 +28,7 @@ func _initialize():
 		call_deferred("add_child", totems[i])
 
 func spawn():
+	randomize()
 	var max_start_offset = start_point.get_global_pos() + Vector2(MIN_STEP / 2, 0)
 	var start_offset = Vector2(rand_range(start_point.get_global_pos().x, max_start_offset.x), max_start_offset.y)
 	var current_spawn_point = start_offset
