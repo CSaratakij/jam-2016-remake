@@ -22,3 +22,5 @@ func _process(delta):
 			previous_mask = current_mask
 			if type_textures.has(current_mask):
 				_sprite.set_texture(type_textures[ current_mask ])
+			else:
+				_sprite.set_texture(null)
