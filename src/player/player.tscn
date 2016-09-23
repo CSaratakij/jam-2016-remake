@@ -135,7 +135,7 @@ default/chorus_send = 0.0
 [node name="Timer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 0.2
+wait_time = 0.36
 one_shot = true
 autostart = false
 

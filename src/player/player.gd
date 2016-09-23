@@ -31,7 +31,6 @@ var max_height_floors = [
 	]
 var is_activate_mask = false
 var is_using_mask = false
-var total_released_jump = 0
 
 onready var tree = get_tree()
 onready var root = tree.get_root()
@@ -46,6 +45,8 @@ onready var _sound_players = {
 onready var _timer = get_node("Timer")
 
 func _ready():
+	if OS.get_name() == "Android":
+		_timer.set_wait_time(0.18)
 	set_process(true)
 	set_process_input(true)
 	set_fixed_process(true)
@@ -53,16 +54,22 @@ func _ready():
 func _input(event):
 	if event.type == InputEvent.MOUSE_BUTTON:
 		is_activate_mask = event.doubleclick
+	elif event.type == InputEvent.SCREEN_TOUCH:
+		if event.pressed and not event.is_echo():
+			if _timer.get_time_left() == 0:
+				is_activate_mask = false
+				_timer.start()
+			else:
+				is_activate_mask = true
+				_timer.stop()
 	else:
 		if event.is_action_pressed("jump"):
 			if _timer.get_time_left() == 0:
+				is_activate_mask = false
 				_timer.start()
-		if event.is_action_released("jump"):
-			total_released_jump += 1
-			if total_released_jump == 2:
-				is_activate_mask = _timer.get_time_left() != 0
+			else:
+				is_activate_mask = true
 				_timer.stop()
-				total_released_jump = 0
 
 func _process(delta):
 	if global.is_game_over():
@@ -81,7 +88,7 @@ func _fixed_process(delta):
 				is_activate_mask = false
 			if is_using_mask and not current_using_mask == "":
 				if current_using_mask == mask_types[ 0 ]:
-					_velocity.y = 0.0
+					_velocity.y = 0
 					_velocity.x = DASH_SPEED * _move_direction.x
 					if abs(get_global_pos().distance_to(using_mask_pos)) > totem_minimum_interval * 1.5:
 						stop_using_mask()
