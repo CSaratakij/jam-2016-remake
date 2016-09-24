@@ -45,6 +45,7 @@ script/script = ExtResource( 1 )
 
 [node name="ControlButton" type="HBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor/left = 1
 anchor/right = 1
 focus/ignore_mouse = false
@@ -130,5 +131,7 @@ autoplay = ""
 [connection signal="pressed" from="ControlButton/btnRestart" to="." method="_on_btnRestart_pressed"]
 
 [connection signal="pressed" from="ControlButton/btnPause" to="." method="_on_btnPause_pressed"]
+
+[connection signal="released" from="ControlButton/btnPause" to="." method="_on_btnPause_released"]
 
 

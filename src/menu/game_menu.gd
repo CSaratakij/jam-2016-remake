@@ -55,3 +55,8 @@ func _on_btnRestart_pressed():
 
 func _on_btnPause_pressed():
 	_pause_game()
+
+func _on_btnPause_released():
+	var players = tree.get_nodes_in_group("player")
+	if not players.empty():
+		players[0].set_is_can_jump(not tree.is_paused())

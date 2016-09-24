@@ -13,6 +13,7 @@ const INIT_MOVE_DIRECTION = Vector2(1, 1)
 var score = 0
 var _velocity = Vector2()
 var _motion = Vector2()
+var is_can_jump = true
 var is_grounded = false
 var _move_direction = INIT_MOVE_DIRECTION
 var current_floor = 1
@@ -103,7 +104,7 @@ func _fixed_process(delta):
 				is_grounded = _raycast.is_colliding()
 				_velocity.y += _move_direction.y * GRAVITY * delta
 				_velocity.x = _move_direction.x * MOVE_SPEED
-				if is_grounded:
+				if is_grounded and is_can_jump:
 					if Input.is_action_pressed("jump"):
 						_velocity.y = -JUMP_FORCE
 						_sound_players[ "player" ].play("jump")
@@ -118,6 +119,12 @@ func _fixed_process(delta):
 			_motion = n.slide(_motion)
 			_velocity = n.slide(_velocity)
 			move(_motion)
+
+func set_is_can_jump(is_can):
+	is_can_jump = is_can
+
+func get_is_can_jump():
+	return is_can_jump
 
 func get_current_floor():
 	return current_floor
