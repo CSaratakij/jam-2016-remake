@@ -3,7 +3,7 @@
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tex" type="Texture" id=2]
 [ext_resource path="res://health/health.gd" type="Script" id=3]
-[ext_resource path="res://sounds/sound_sample.tres" type="SampleLibrary" id=4]
+[ext_resource path="res://sounds/sfx.tres" type="SampleLibrary" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -95,8 +95,6 @@ blend_times = [  ]
 autoplay = "player_running"
 
 [node name="SamplePlayer" type="Node2D" parent="."]
-
-editor/display_folded = true
 
 [node name="Player" type="SamplePlayer" parent="SamplePlayer"]
 
