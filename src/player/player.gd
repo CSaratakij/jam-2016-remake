@@ -44,6 +44,9 @@ onready var _sound_players = {
 	"item" : get_node("SamplePlayer/Item")
 }
 onready var _timer = get_node("Timer")
+onready var _particles = {
+	"have_mask" : get_node("Particles/have_mask_particle")
+}
 
 func _ready():
 	if OS.get_name() == "Android":
@@ -75,8 +78,18 @@ func _input(event):
 func _process(delta):
 	if global.is_game_over():
 		_sprite.hide()
+		_particles[ "have_mask" ].hide()
 	else:
 		_sprite.show()
+		_particles[ "have_mask" ].set_rotd((_move_direction.x * 90) * -1)
+		if not current_mask == "":
+			_particles[ "have_mask" ].show()
+			if not is_grounded:
+				_particles[ "have_mask" ].set_param(Particles2D.PARAM_TANGENTIAL_ACCEL, _move_direction.x * 60)
+			else:
+				_particles[ "have_mask" ].set_param(Particles2D.PARAM_TANGENTIAL_ACCEL, 0)
+		else:
+			_particles[ "have_mask" ].hide()
 
 func _fixed_process(delta):
 	if _health.is_alive():

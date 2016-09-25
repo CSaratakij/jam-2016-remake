@@ -2,10 +2,10 @@
 
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://levels/bg.jpg" type="Texture" id=2]
-[ext_resource path="res://floor/floor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://spawner/totem_spawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://spawner/item_spawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://spawner/item_spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://spawner/totem_spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://floor/floor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://menu/game_menu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/ui_player_status.tscn" type="PackedScene" id=8]
 
@@ -53,26 +53,6 @@ transform/pos = Vector2( 368, 207 )
 z/z = -1
 texture = ExtResource( 2 )
 __meta__ = { "_edit_lock_":true }
-
-[node name="floors" type="Node2D" parent="."]
-
-editor/display_folded = true
-__meta__ = { "_edit_lock_":true }
-
-[node name="floor1" parent="floors" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 368, 128 )
-collision/layers = 2
-
-[node name="floor2" parent="floors" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 368, 266 )
-collision/layers = 2
-
-[node name="floor3" parent="floors" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 368, 404 )
-collision/layers = 2
 
 [node name="SwitchSideTrigger" type="Node2D" parent="."]
 
@@ -138,54 +118,11 @@ polygon = Vector2Array( -32, -86, -14, -86, -14, 76, -32, 76 )
 shape_range = Vector2( 0, 0 )
 trigger = true
 
-[node name="Totem_Spawners" type="Node2D" parent="."]
-
-editor/display_folded = true
-
-[node name="totem_spawner" parent="Totem_Spawners" instance=ExtResource( 4 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 992, 72 )
-
-[node name="start_point" parent="Totem_Spawners/totem_spawner"]
-
-transform/pos = Vector2( -769.871, 10 )
-
-[node name="end_point" parent="Totem_Spawners/totem_spawner"]
-
-transform/pos = Vector2( -278.037, 10 )
-
-[node name="totem_spawner1" parent="Totem_Spawners" instance=ExtResource( 4 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 992, 192 )
-
-[node name="start_point" parent="Totem_Spawners/totem_spawner1"]
-
-transform/pos = Vector2( -895.448, 30 )
-
-[node name="end_point" parent="Totem_Spawners/totem_spawner1"]
-
-transform/pos = Vector2( -480, 30 )
-
-[node name="totem_spawner2" parent="Totem_Spawners" instance=ExtResource( 4 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 982, 352 )
-
-[node name="start_point" parent="Totem_Spawners/totem_spawner2"]
-
-transform/pos = Vector2( -761.162, 10 )
-
-[node name="end_point" parent="Totem_Spawners/totem_spawner2"]
-
-transform/pos = Vector2( -318.114, 10 )
-
 [node name="Item_Spawners" type="Node2D" parent="."]
 
 editor/display_folded = true
 
-[node name="item_spawner" parent="Item_Spawners" instance=ExtResource( 5 )]
+[node name="item_spawner" parent="Item_Spawners" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 892, 62 )
@@ -198,7 +135,7 @@ transform/pos = Vector2( -760, 20 )
 
 transform/pos = Vector2( -200, 20 )
 
-[node name="item_spawner1" parent="Item_Spawners" instance=ExtResource( 5 )]
+[node name="item_spawner1" parent="Item_Spawners" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 902, 192 )
@@ -211,7 +148,7 @@ transform/pos = Vector2( -860, 30 )
 
 transform/pos = Vector2( -330, 30 )
 
-[node name="item_spawner2" parent="Item_Spawners" instance=ExtResource( 5 )]
+[node name="item_spawner2" parent="Item_Spawners" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 892, 342 )
@@ -224,9 +161,73 @@ transform/pos = Vector2( -640, 20 )
 
 transform/pos = Vector2( -200, 20 )
 
-[node name="player" parent="." instance=ExtResource( 6 )]
+[node name="player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -4, 68 )
+
+[node name="Totem_Spawners" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 0, 3 )
+
+[node name="totem_spawner" parent="Totem_Spawners" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 992, 72 )
+
+[node name="start_point" parent="Totem_Spawners/totem_spawner"]
+
+transform/pos = Vector2( -769.871, 10 )
+
+[node name="end_point" parent="Totem_Spawners/totem_spawner"]
+
+transform/pos = Vector2( -278.037, 10 )
+
+[node name="totem_spawner1" parent="Totem_Spawners" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 992, 192 )
+
+[node name="start_point" parent="Totem_Spawners/totem_spawner1"]
+
+transform/pos = Vector2( -895.448, 30 )
+
+[node name="end_point" parent="Totem_Spawners/totem_spawner1"]
+
+transform/pos = Vector2( -480, 30 )
+
+[node name="totem_spawner2" parent="Totem_Spawners" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 982, 352 )
+
+[node name="start_point" parent="Totem_Spawners/totem_spawner2"]
+
+transform/pos = Vector2( -761.162, 10 )
+
+[node name="end_point" parent="Totem_Spawners/totem_spawner2"]
+
+transform/pos = Vector2( -318.114, 10 )
+
+[node name="floors" type="Node2D" parent="."]
+
+editor/display_folded = true
+__meta__ = { "_edit_lock_":true }
+
+[node name="floor1" parent="floors" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 368, 128 )
+collision/layers = 2
+
+[node name="floor2" parent="floors" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 368, 266 )
+collision/layers = 2
+
+[node name="floor3" parent="floors" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 368, 404 )
+collision/layers = 2
 
 [node name="game_menu" parent="." instance=ExtResource( 7 )]
 
@@ -238,9 +239,9 @@ margin/right = 58.0
 margin/bottom = 56.0
 
 
-[editable path="Totem_Spawners/totem_spawner"]
-[editable path="Totem_Spawners/totem_spawner1"]
-[editable path="Totem_Spawners/totem_spawner2"]
 [editable path="Item_Spawners/item_spawner"]
 [editable path="Item_Spawners/item_spawner1"]
 [editable path="Item_Spawners/item_spawner2"]
+[editable path="Totem_Spawners/totem_spawner"]
+[editable path="Totem_Spawners/totem_spawner1"]
+[editable path="Totem_Spawners/totem_spawner2"]

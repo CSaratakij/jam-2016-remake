@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
-[ext_resource path="res://player/player.tex" type="Texture" id=2]
-[ext_resource path="res://health/health.gd" type="Script" id=3]
-[ext_resource path="res://sounds/sfx.tres" type="SampleLibrary" id=4]
+[ext_resource path="res://particles/have_mask_particle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tex" type="Texture" id=3]
+[ext_resource path="res://health/health.gd" type="Script" id=4]
+[ext_resource path="res://sounds/sfx.tres" type="SampleLibrary" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,7 +18,7 @@ extents = Vector2( 4.88787, 16.511 )
 
 [sub_resource type="Animation" id=3]
 
-length = 0.2
+length = 0.3
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -38,9 +39,16 @@ collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="have_mask_particle" parent="Particles" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 0, 12 )
+config/amount = 22
+
 [node name="Sprite" type="Sprite" parent="."]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region = true
 region_rect = Rect2( 0, 0, 40, 40 )
 
@@ -73,7 +81,7 @@ _update_shape_index = 0
 
 [node name="health" type="Node2D" parent="."]
 
-script/script = ExtResource( 3 )
+script/script = ExtResource( 4 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
@@ -96,10 +104,12 @@ autoplay = "player_running"
 
 [node name="SamplePlayer" type="Node2D" parent="."]
 
+editor/display_folded = true
+
 [node name="Player" type="SamplePlayer" parent="SamplePlayer"]
 
 config/polyphony = 1
-config/samples = ExtResource( 4 )
+config/samples = ExtResource( 5 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -116,7 +126,7 @@ default/chorus_send = 0.0
 [node name="Item" type="SamplePlayer" parent="SamplePlayer"]
 
 config/polyphony = 1
-config/samples = ExtResource( 4 )
+config/samples = ExtResource( 5 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0

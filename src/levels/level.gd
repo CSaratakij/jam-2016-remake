@@ -27,13 +27,13 @@ func _process(delta):
 		_spawn_item()
 		is_init_spawn = true
 	if not players.empty():
-		current_floor = players[0].get_current_floor()
+		current_floor = players[ 0 ].get_current_floor()
 		if current_floor != previous_floor:
 			if current_floor == 1:
 				_spawn_totem()
 				_spawn_item()
 			previous_floor = current_floor
-		if not players[0].get_node("health").is_alive():
+		if not players[ 0 ].get_node("health").is_alive():
 			global.game_over()
 
 func _spawn_totem():
