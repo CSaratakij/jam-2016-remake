@@ -10,7 +10,6 @@ const JUMP_FORCE = 230.0
 const POINT = 1
 const INIT_MOVE_DIRECTION = Vector2(1, 1)
 
-var score = 0
 var _velocity = Vector2()
 var _motion = Vector2()
 var is_can_jump = true
@@ -107,6 +106,7 @@ func _fixed_process(delta):
 					if abs(get_global_pos().distance_to(using_mask_pos)) > totem_minimum_interval * 1.5:
 						stop_using_mask()
 				elif current_using_mask == mask_types[ 1 ]:
+					global.add_score(1)
 					if current_floor == 3:
 						change_floor(1)
 					else:
