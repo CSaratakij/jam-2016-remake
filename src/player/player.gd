@@ -18,7 +18,7 @@ var _move_direction = INIT_MOVE_DIRECTION
 var current_floor = 1
 var current_mask = ""
 var current_using_mask = ""
-var using_mask_pos = Vector2()
+var using_mask_pos = Vector2(0, 0)
 var start_points = [
 		Vector2(0, 80),
 		Vector2(715, 220),
@@ -31,6 +31,7 @@ var max_height_floors = [
 	]
 var is_activate_mask = false
 var is_using_mask = false
+var is_used_dig_mask = false
 
 onready var tree = get_tree()
 onready var root = tree.get_root()
@@ -112,6 +113,7 @@ func _fixed_process(delta):
 					else:
 						change_floor(current_floor + 1)
 					set_global_pos(Vector2(get_global_pos().x, max_height_floors[ current_floor - 1].y))
+					is_used_dig_mask = true
 					stop_using_mask()
 			else:
 				is_grounded = _raycast.is_colliding()
@@ -139,11 +141,23 @@ func set_is_can_jump(is_can):
 func get_is_can_jump():
 	return is_can_jump
 
+func get_is_using_mask():
+	return is_using_mask
+
 func get_current_floor():
 	return current_floor
 
 func get_current_mask():
 	return current_mask
+
+func get_current_using_mask():
+	return current_using_mask
+
+func get_using_mask_pos():
+	return using_mask_pos
+
+func get_move_direction():
+	return _move_direction
 
 func change_move_direction_h():
 	_move_direction.x *= -1
