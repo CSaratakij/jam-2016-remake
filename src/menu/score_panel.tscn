@@ -36,6 +36,7 @@ alignment = 1
 
 [node name="Score" type="HBoxContainer" parent="Panel"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -80,7 +81,6 @@ max_lines_visible = -1
 
 [node name="BestScore" type="HBoxContainer" parent="Panel"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
