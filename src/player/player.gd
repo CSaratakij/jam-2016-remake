@@ -9,6 +9,8 @@ const DASH_SPEED = 900.0
 const JUMP_FORCE = 230.0
 const POINT = 1
 const INIT_MOVE_DIRECTION = Vector2(1, 1)
+const DOUBLE_KEY_DELAY = 0.36
+const DOUBLE_TOUCH_DELAY = 0.18
 
 var _velocity = Vector2()
 var _motion = Vector2()
@@ -52,8 +54,6 @@ onready var _particles = {
 }
 
 func _ready():
-	if OS.get_name() == "Android":
-		_timer.set_wait_time(0.18)
 	set_process(true)
 	set_process_input(true)
 	set_fixed_process(true)
@@ -62,6 +62,8 @@ func _input(event):
 	if event.type == InputEvent.MOUSE_BUTTON:
 		is_activate_mask = event.doubleclick
 	elif event.type == InputEvent.SCREEN_TOUCH:
+		if _timer.get_wait_time() != DOUBLE_TOUCH_DELAY:
+			_timer.set_wait_time(DOUBLE_TOUCH_DELAY)
 		if event.pressed and not event.is_echo():
 			if _timer.get_time_left() == 0:
 				is_activate_mask = false
@@ -70,6 +72,8 @@ func _input(event):
 				is_activate_mask = true
 				_timer.stop()
 	else:
+		if _timer.get_wait_time() != DOUBLE_KEY_DELAY:
+			_timer.set_wait_time(DOUBLE_KEY_DELAY)
 		if event.is_action_pressed("jump"):
 			if _timer.get_time_left() == 0:
 				is_activate_mask = false
