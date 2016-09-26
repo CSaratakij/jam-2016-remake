@@ -22,15 +22,15 @@ var using_mask_pos = Vector2(0, 0)
 var hit_totem_pos = Vector2(0, 0)
 var player_to_hit_totem_pos = Vector2(0, 0)
 var start_points = [
-		Vector2(0, 80),
-		Vector2(715, 220),
-		Vector2(0, 360)
-	]
+	Vector2(0, 80),
+	Vector2(715, 220),
+	Vector2(0, 360)
+]
 var max_height_floors = [
-		Vector2(0, 50),
-		Vector2(0, 180),
-		Vector2(0, 320)
-	]
+	Vector2(0, 50),
+	Vector2(0, 180),
+	Vector2(0, 320)
+]
 var is_activate_mask = false
 var is_using_mask = false
 var is_used_dig_mask = false

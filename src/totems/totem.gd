@@ -1,32 +1,19 @@
 
 extends KinematicBody2D
 
-const GRAVITY = 180
-
 var type_id = 0
 var is_active = false
-var velocity = Vector2()
-var motion = Vector2()
 
 var totem_textures = [
 	preload("res://totems/totem1.png"),
 	preload("res://totems/totem2.png"),
 	preload("res://totems/totem3.png")
-	]
+]
 
 onready var _sprite = get_node("Sprite")
-onready var _collision = get_node("CollisionShape2D")
 
 func _ready():
-	set_fixed_process(true)
 	set_type(type_id)
-
-func _fixed_process(delta):
-	_collision.set_trigger(not is_active)
-	if is_active:
-		velocity.y += GRAVITY * delta
-		motion = velocity * delta
-		move(motion)
 
 func set_active(active):
 	is_active = active
