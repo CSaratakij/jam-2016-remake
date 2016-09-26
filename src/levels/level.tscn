@@ -3,8 +3,8 @@
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://levels/bg.jpg" type="Texture" id=2]
 [ext_resource path="res://spawner/item_spawner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://spawner/particle_spawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://spawner/particle_spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://spawner/totem_spawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://floor/floor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://menu/game_menu.tscn" type="PackedScene" id=8]
@@ -162,11 +162,11 @@ transform/pos = Vector2( -640, 20 )
 
 transform/pos = Vector2( -200, 20 )
 
-[node name="particle_spawner" parent="." instance=ExtResource( 4 )]
-
-[node name="player" parent="." instance=ExtResource( 5 )]
+[node name="player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -4, 68 )
+
+[node name="particle_spawner" parent="." instance=ExtResource( 5 )]
 
 [node name="Totem_Spawners" type="Node2D" parent="."]
 

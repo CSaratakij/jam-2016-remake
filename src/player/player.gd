@@ -19,6 +19,8 @@ var current_floor = 1
 var current_mask = ""
 var current_using_mask = ""
 var using_mask_pos = Vector2(0, 0)
+var hit_totem_pos = Vector2(0, 0)
+var player_to_hit_totem_pos = Vector2(0, 0)
 var start_points = [
 		Vector2(0, 80),
 		Vector2(715, 220),
@@ -32,6 +34,7 @@ var max_height_floors = [
 var is_activate_mask = false
 var is_using_mask = false
 var is_used_dig_mask = false
+var is_hit_totem = false
 
 onready var tree = get_tree()
 onready var root = tree.get_root()
@@ -138,6 +141,12 @@ func _fixed_process(delta):
 func set_is_can_jump(is_can):
 	is_can_jump = is_can
 
+func set_is_hit_totem(is_hit):
+	is_hit_totem = is_hit
+
+func get_is_hit_totem():
+	return is_hit_totem
+
 func get_is_can_jump():
 	return is_can_jump
 
@@ -155,6 +164,12 @@ func get_current_using_mask():
 
 func get_using_mask_pos():
 	return using_mask_pos
+
+func get_hit_totem_pos():
+	return hit_totem_pos
+
+func get_player_to_hit_totem_pos():
+	return player_to_hit_totem_pos
 
 func get_move_direction():
 	return _move_direction
@@ -205,6 +220,13 @@ func _on_Area2D_area_enter( area ):
 func _on_Area2D_body_enter( body ):
 	var groups = body.get_groups()
 	if groups.has("totem"):
+		if body.is_colliding():
+			set_is_hit_totem(true)
+			hit_totem_pos = body.get_global_pos()
+			if _move_direction.x > 0:
+				player_to_hit_totem_pos = hit_totem_pos - get_global_pos()
+			else:
+				player_to_hit_totem_pos = get_global_pos() - hit_totem_pos
 		_health.remove(1)
 		_sound_players[ "player" ].play("hit")
 		set_global_pos(start_points[ current_floor - 1 ])
