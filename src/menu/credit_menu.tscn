@@ -110,7 +110,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="lbl_Jirashy_G_Kongjinda" type="Label" parent="Artist_Members_Name"]
+[node name="lbl_Jirashy_Kongjinda" type="Label" parent="Artist_Members_Name"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -121,7 +121,7 @@ margin/top = 22.0
 margin/right = 442.0
 margin/bottom = 40.0
 custom_fonts/font = ExtResource( 4 )
-text = "Jirashy G. Kongjinda"
+text = "Jirashy Kongjinda"
 align = 1
 valign = 1
 percent_visible = 1.0
