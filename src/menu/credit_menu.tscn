@@ -1,0 +1,284 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://menu/credit_menu.gd" type="Script" id=1]
+[ext_resource path="res://levels/bg.jpg" type="Texture" id=2]
+[ext_resource path="res://font/GamePause.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://font/SubGameTitle.fnt" type="BitmapFont" id=4]
+[ext_resource path="res://font/Common_Button.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://font/Common_Small_Button.fnt" type="BitmapFont" id=6]
+
+[node name="credit_menu" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = ExtResource( 1 )
+
+[node name="bg_menu" type="TextureFrame" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 736.0
+margin/bottom = 414.0
+texture = ExtResource( 2 )
+stretch_mode = 0
+__meta__ = { "_edit_lock_":true }
+
+[node name="lblTeamName" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 150.0
+margin/top = 40.0
+margin/right = 592.0
+margin/bottom = 95.0
+custom_fonts/font = ExtResource( 3 )
+text = "Team : Jam"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblArtist" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 150.0
+margin/top = 100.0
+margin/right = 592.0
+margin/bottom = 118.0
+custom_fonts/font = ExtResource( 4 )
+text = "Artist"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 340.0
+margin/top = 100.0
+margin/right = 400.0
+margin/bottom = 140.0
+
+[node name="Artist_Members_Name" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 150.0
+margin/top = 130.0
+margin/right = 592.0
+margin/bottom = 198.0
+alignment = 0
+
+[node name="lbl_Anisa_Jaiteam" type="Label" parent="Artist_Members_Name"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 442.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 4 )
+text = "Anisa Jaiteam"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lbl_Jirashy_G_Kongjinda" type="Label" parent="Artist_Members_Name"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 22.0
+margin/right = 442.0
+margin/bottom = 40.0
+custom_fonts/font = ExtResource( 4 )
+text = "Jirashy G. Kongjinda"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lbl_Munchupa_Lerkprasertkul" type="Label" parent="Artist_Members_Name"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 44.0
+margin/right = 442.0
+margin/bottom = 62.0
+custom_fonts/font = ExtResource( 4 )
+text = "Munchupa Lerkprasertkul"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblProgrammer" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 150.0
+margin/top = 210.0
+margin/right = 592.0
+margin/bottom = 228.0
+custom_fonts/font = ExtResource( 4 )
+text = "Programmer"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSeparator1" type="HSeparator" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 340.0
+margin/top = 210.0
+margin/right = 400.0
+margin/bottom = 250.0
+
+[node name="Programmer_Membes_Name" type="VBoxContainer" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 150.0
+margin/top = 240.0
+margin/right = 592.0
+margin/bottom = 308.0
+alignment = 0
+
+[node name="lbl_Chatchai_Saratakij" type="Label" parent="Programmer_Membes_Name"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 442.0
+margin/bottom = 18.0
+custom_fonts/font = ExtResource( 4 )
+text = "Chatchai Saratakij"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lbl_Nathachai_Thongniran" type="Label" parent="Programmer_Membes_Name"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 22.0
+margin/right = 442.0
+margin/bottom = 40.0
+custom_fonts/font = ExtResource( 4 )
+text = "Nathachai Thongniran"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lbl_Sahapat Tong-on" type="Label" parent="Programmer_Membes_Name"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 44.0
+margin/right = 442.0
+margin/bottom = 62.0
+custom_fonts/font = ExtResource( 4 )
+text = "Sahapat Tong-on"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblThankyou" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 150.0
+margin/top = 320.0
+margin/right = 592.0
+margin/bottom = 354.0
+custom_fonts/font = ExtResource( 5 )
+text = "Thank you for playing"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="btnBack" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 20.0
+margin/top = 370.0
+margin/right = 81.0
+margin/bottom = 399.0
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Back"
+flat = true
+__meta__ = { "_edit_lock_":true }
+
+[connection signal="pressed" from="btnBack" to="." method="_on_btnBack_pressed"]
+
+

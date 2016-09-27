@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://menu/mainmenu.gd" type="Script" id=1]
 [ext_resource path="res://font/GameTitle.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://font/SubGameTitle.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://menu/start-button.png" type="Texture" id=4]
-[ext_resource path="res://menu/menu-bg.jpg" type="Texture" id=5]
+[ext_resource path="res://font/Common_Small_Button.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://menu/menu-bg.jpg" type="Texture" id=6]
 
 [node name="mainmenu" type="Control"]
 
@@ -75,13 +76,34 @@ shortcut = null
 textures/normal = ExtResource( 4 )
 __meta__ = { "_edit_lock_":true }
 
+[node name="btnCredit" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 650.0
+margin/top = 370.0
+margin/right = 721.0
+margin/bottom = 399.0
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Credit"
+flat = true
+__meta__ = { "_edit_lock_":true }
+
 [node name="BG" type="Sprite" parent="."]
 
 transform/pos = Vector2( 368, 207 )
 z/z = -1
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 __meta__ = { "_edit_lock_":true }
 
 [connection signal="pressed" from="btnPlay" to="." method="_on_btnPlay_pressed"]
+
+[connection signal="pressed" from="btnCredit" to="." method="_on_btnCredit_pressed"]
 
 
