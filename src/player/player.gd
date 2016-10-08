@@ -226,10 +226,7 @@ func _on_Area2D_body_enter( body ):
 	if groups.has("totem"):
 		set_is_hit_totem(true)
 		hit_totem_pos = body.get_global_pos()
-		if _move_direction.x > 0:
-			player_to_hit_totem_pos = hit_totem_pos - get_global_pos()
-		else:
-			player_to_hit_totem_pos = get_global_pos() - hit_totem_pos
+		player_to_hit_totem_pos = get_global_pos() - hit_totem_pos
 		_health.remove(1)
 		_sound_players[ "player" ].play("hit")
 		set_global_pos(start_points[ current_floor - 1 ])

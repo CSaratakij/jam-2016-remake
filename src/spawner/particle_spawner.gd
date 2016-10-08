@@ -37,10 +37,8 @@ func _process(delta):
 			players[ 0 ].is_used_dig_mask = false
 		if players[ 0 ].get_is_hit_totem():
 			var pos = players[ 0 ].get_player_to_hit_totem_pos().normalized()
-			var slope = pos.y / pos.x
-			var angle_radian = atan(slope)
-			var angle_degree = angle_radian * 180 / PI
-			angle_degree += 180
+			var angle_radian = atan2(pos.x, pos.y)
+			var angle_degree = (angle_radian * 180) / PI
 			var params = {
 				Particles2D.PARAM_DIRECTION : angle_degree
 			}
