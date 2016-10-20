@@ -19,7 +19,7 @@ func clear():
 	_current = MIN_LIFE
 
 func restore(point):
-	_current = clamp((_current + point), MIN_LIFE, MAX_LIFE)
+	_current = int(clamp((_current + point), MIN_LIFE, MAX_LIFE))
 
 func remove(point):
-	_current = clamp((_current - point), MIN_LIFE, MAX_LIFE)
+	_current = int(clamp((_current - point), MIN_LIFE, MAX_LIFE))
