@@ -34,11 +34,11 @@ func spawn():
 	var current_spawn_point = start_offset
 	var totem_type_index = int(rand_range(0, 3))
 	
-	spawned_totems.append(totems[0])
-	spawned_totems[0].set_type(totem_type_index)
-	spawned_totems[0].set_global_pos(current_spawn_point)
-	spawned_totems[0].set_active(true)
-	spawned_totems[0].show()
+	spawned_totems.append(totems[ 0 ])
+	spawned_totems[ 0 ].set_type(totem_type_index)
+	spawned_totems[ 0 ].set_global_pos(current_spawn_point)
+	spawned_totems[ 0 ].set_active(true)
+	spawned_totems[ 0 ].show()
 	
 	var spawned_index = 1
 	

@@ -5,11 +5,11 @@ const types = [
 	"Dash",
 	"Dig",
 	"None"
-	]
+]
 
 const type_textures = {
-	types[0] : preload("res://mask/mask-dash.png"),
-	types[1] : preload("res://mask/mask-dig.png"),
+	types[ 0 ] : preload("res://mask/mask-dash.png"),
+	types[ 1 ] : preload("res://mask/mask-dig.png"),
 }
 
 var type = types[ types.size() - 1 ]

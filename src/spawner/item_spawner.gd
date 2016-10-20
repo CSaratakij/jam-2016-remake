@@ -17,8 +17,8 @@ onready var start_point = get_node("start_point")
 onready var end_point = get_node("end_point")
 
 func _ready():
-	var health = ITEMS[0].instance()
-	var mask = ITEMS[1].instance()
+	var health = ITEMS[ 0 ].instance()
+	var mask = ITEMS[ 1 ].instance()
 	for index in range(MAX_ITEMS_PER_FLOOR):
 		healths.append(health.duplicate())
 		masks.append(mask.duplicate())
